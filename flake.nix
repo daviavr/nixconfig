@@ -9,11 +9,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.callmekexo = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hosts/callmekexo/configuration.nix
+	home-manager.nixosModules.home-manager 
+	{
+	  home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.davi = import ./home/home.nix;
+	}
       ];
     };
   };
