@@ -14,7 +14,7 @@
     autosuggestion.enable = true;
     
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig#callmekexo"
+      update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig#callmekexo";
     };
 
     oh-my-zsh = {
