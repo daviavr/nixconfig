@@ -68,9 +68,7 @@
     isNormalUser = true;
     description = "Davi Reis";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    shell = pkgs.zsh
   };
 
   programs.firefox.enable = true;
@@ -82,18 +80,6 @@
     git
     keyd
   ];
-
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
