@@ -68,7 +68,7 @@
     isNormalUser = true;
     description = "Davi Reis";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh
+    shell = pkgs.zsh;
   };
 
   programs.firefox.enable = true;
