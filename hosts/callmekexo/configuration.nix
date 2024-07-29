@@ -82,6 +82,7 @@
     git
     keyd
     tmux
+    texlive.combined.scheme-full
     gnome.dconf-editor
   ];
 
