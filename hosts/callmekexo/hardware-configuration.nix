@@ -24,6 +24,7 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  zramSwap.enable = true;
   swapDevices = [ 
     {
       device = "/dev/nvme0n1p4";
