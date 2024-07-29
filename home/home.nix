@@ -8,6 +8,7 @@
     wl-clipboard 
     gnomeExtensions.pop-shell
     pop-launcher
+    gnomeExtensions.ddterm
   ];
 
   services.flatpak.enable = true;
