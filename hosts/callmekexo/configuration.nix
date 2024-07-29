@@ -42,9 +42,9 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.flatpak.enable = true;
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "br";
-    xkbVariant = "";
+    variant = "";
   };
 
   console.keyMap = "br-abnt2";
