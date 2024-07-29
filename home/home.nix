@@ -9,6 +9,10 @@
     gnomeExtensions.pop-shell
     pop-launcher
     gnomeExtensions.ddterm
+    gnomeExtensions.another-window-session-manager
+    gnomeExtensions.no-overview
+    gnomeExtensions.window-is-ready-remover
+    gnomeExtensions.grand-theft-focus
   ];
 
   services.flatpak.enable = true;
@@ -18,6 +22,7 @@
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"
     "com.spotify.Client"
+    "com.github.wwmm.easyeffects"
   ];
 
   programs.git = {
