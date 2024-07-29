@@ -82,6 +82,7 @@
     git
     keyd
     tmux
+    gnome.dconf-editor
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
