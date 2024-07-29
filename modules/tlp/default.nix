@@ -1,8 +1,10 @@
 { pkgs, ...}:
 {
-  service.tlp = {
+  services.power-profiles-daemon.enable = false;
+  services.tlp = {
     enable = true;
     settings = {
+RUNTIME_PM_ON_AC="auto";
 CPU_DRIVER_OPMODE_ON_AC="passive";
 CPU_DRIVER_OPMODE_ON_BAT="active";
 
