@@ -1,7 +1,24 @@
-{ config, pkgs, ... }:
+{ config, pkgs, flake-inputs, ... }:
 {
+  imports = [ flake-inputs.flatpaks.homeManagerModules.nix-flatpak ];
   home.username = "davi";
   home.homeDirectory = "/home/davi";
+
+  home.packages = with pkgs; [ 
+    wl-clipboard 
+    gnomeExtensions.pop-shell
+    pop-launcher
+  ];
+
+  services.flatpak.enable = true;
+
+  services.flatpak.packages = [
+    "com.obsproject.Studio"
+    "md.obsidian.Obsidian"
+    "dev.vencord.Vesktop"
+    "com.spotify.Client"
+  ];
+
   programs.git = {
     enable = true;
     userName = "Davi Reis";
@@ -20,7 +37,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git tmux" ];
-      theme = "robbyrussel";
+      theme = "robbyrussell";
     };
   };
 

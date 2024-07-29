@@ -40,6 +40,7 @@
 
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  services.flatpak.enable = true;
 
   services.xserver = {
     layout = "br";
@@ -54,11 +55,11 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    wireplumber.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = false;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -67,11 +68,12 @@
   users.users.davi = {
     isNormalUser = true;
     description = "Davi Reis";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     shell = pkgs.zsh;
   };
 
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -79,6 +81,7 @@
     neovim
     git
     keyd
+    tmux
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
