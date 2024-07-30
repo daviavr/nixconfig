@@ -11,10 +11,9 @@
   };
 
   outputs = { self, nixpkgs, home-manager, flatpaks, ... }@inputs: {
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     nixosConfigurations.callmekexo = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs outputs;};
+      specialArgs = {inherit inputs;};
       modules = [
         ./hosts/callmekexo/configuration.nix
 	home-manager.nixosModules.home-manager 
