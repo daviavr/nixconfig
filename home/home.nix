@@ -32,9 +32,11 @@
   };
   programs.zsh = {
     enable = true;
+
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
+    initExtra = "PATH=\$PATH:/home/davi/.cargo/bin";
     
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig#callmekexo";
