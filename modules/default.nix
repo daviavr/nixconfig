@@ -3,5 +3,6 @@
   imports = [
     ./keyd
     ./tlp
+    ./vscodium
   ];
 }
