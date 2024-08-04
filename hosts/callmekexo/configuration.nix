@@ -38,6 +38,17 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.flatpak.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    settings.folders."documentos" = {
+      id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";
+      path = "~/Documents";
+      name = "callmekexo";
+      autoAcceptFolders = true;
+    };
+  };
+
   services.xserver.xkb = {
     layout = "br";
     variant = "";
@@ -114,7 +125,6 @@
     texlive.combined.scheme-full
     gnome.dconf-editor
     gparted
-    syncthing
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
