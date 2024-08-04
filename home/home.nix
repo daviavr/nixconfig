@@ -13,6 +13,7 @@
     gnomeExtensions.no-overview
     gnomeExtensions.window-is-ready-remover
     gnomeExtensions.grand-theft-focus
+    gnomeExtensions.caffeine
   ];
 
   services.flatpak.enable = true;
@@ -21,6 +22,7 @@
     "com.obsproject.Studio"
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"
+    "com.discordapp.Discord"
     "com.spotify.Client"
     "com.github.wwmm.easyeffects"
   ];
@@ -30,6 +32,7 @@
     userName = "Davi Reis";
     userEmail = "daviavr@gmail.com";
   };
+
   programs.zsh = {
     enable = true;
 
@@ -47,6 +50,17 @@
       plugins = [ "git tmux" ];
       theme = "robbyrussell";
     };
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+      usernamehw.errorlens
+      esbenp.prettier-vscode
+      pkief.material-icon-theme
+    ];
   };
 
   programs.home-manager.enable = true;
