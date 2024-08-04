@@ -15,6 +15,11 @@
   networking.hostName = "callmekexo"; # Define your hostname.
   networking.networkmanager.enable = true;
 
+  networking.firewall = {
+    allowedTCPPorts = [ 8384 22000 ];
+    allowedUDPPorts = [ 22000 21027 ];
+  };
+
   time.timeZone = "America/Sao_Paulo";
 
   # Select internationalisation properties.
@@ -38,14 +43,19 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.flatpak.enable = true;
 
+  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    settings.folders."documentos" = {
-      id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";
-      path = "~/Documents";
-      name = "callmekexo";
-      autoAcceptFolders = true;
+    settings = {
+      folders."documentos" = {
+        id = "c3qdq-tyyre";
+        path = "~/Documents";
+        name = "callmekexo";
+      };
+      devices."pixel8" = {
+        id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";
+      };
     };
   };
 
