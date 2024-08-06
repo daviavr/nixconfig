@@ -88,7 +88,7 @@
   users.users.davi = {
     isNormalUser = true;
     description = "Davi Reis";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "uinput"];
     shell = pkgs.zsh;
   };
 
@@ -138,6 +138,7 @@
     texlive.combined.scheme-full
     gnome.dconf-editor
     gparted
+    kitty
   ];
 
   system.stateVersion = "24.05"; # Did you read the comment?

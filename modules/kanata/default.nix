@@ -2,6 +2,6 @@
 {
   services.kanata = {
     enable = true;
-    keyboard.mykeyboards.configFile = builtins.readfile ./cfg-linux.kbd 
+    keyboards.mykeyboards.configFile = ./cfg-linux.kbd;
   };
 }

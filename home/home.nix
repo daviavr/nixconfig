@@ -16,16 +16,23 @@
     gnomeExtensions.caffeine
   ];
 
-  services.flatpak.enable = true;
-
-  services.flatpak.packages = [
+  services.flatpak = { 
+    enable = true;
+    packages = [
     "com.obsproject.Studio"
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"
     "com.discordapp.Discord"
     "com.spotify.Client"
     "com.github.wwmm.easyeffects"
-  ];
+    ];
+  };
+
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableZshIntegration = true;
+    extraConfig = ''hide_window_decorations yes'';
+  };
 
   programs.git = {
     enable = true;

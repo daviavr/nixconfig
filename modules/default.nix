@@ -1,7 +1,8 @@
 {...}:
 {
   imports = [
-    ./keyd
     ./tlp
+    #./keyd
+    ./kanata
   ];
 }
