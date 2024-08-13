@@ -133,6 +133,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
+    direnv
     keyd
     tmux
     texlive.combined.scheme-full

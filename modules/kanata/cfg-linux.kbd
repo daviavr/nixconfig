@@ -1,5 +1,5 @@
 (defcfg
-  process-unmapped-keys no
+  process-unmapped-keys yes
   windows-altgr cancel-lctl-press
 )
 
@@ -32,12 +32,14 @@
 )
 
 (defvar
- tt 80
- ht 120
+ ht 150
+ td 100
+ pinky.tt 140
+ index.tt 90
 )
 
 (defalias
-  caps (multi f24 (tap-hold-press $tt $ht caps (layer-toggle caps-overrides)))
+  caps (multi f24 (tap-hold-press $pinky.tt $ht caps (layer-toggle caps-overrides)))
 )
 
 (deflayermap (caps-overrides)
@@ -53,10 +55,6 @@
   ralt lrld
 )
 
-(defvirtualkeys
-  pseudo.sft nop1
-)
-
 (defalias
   ralt (tap-dance 300 ((layer-switch qwerty-abnt2) (layer-switch programmer)))
   esc (fork esc RS-grv (lsft))
@@ -64,7 +62,7 @@
 
 (deftemplate ow.keys (original-action new-action real-key)
   (switch 
-    ((and (or lsft nop1) (input-history real $real-key 1))) (unshift $real-key) break 
+    ((and (or lsft nop1) (input-history real $real-key 1))) (multi (unshift $real-key) $new-action) break 
     (lsft) $new-action break
     () $original-action break
   )
@@ -97,13 +95,26 @@
   qmark RS-/
 )
 
+(defvar
+  num.keys (1 2 3 4 5 6 7 8 9 0) 
+)
+
+(defvirtualkeys
+  pseudo.sft nop1
+)
+
+(deflayermap (changelayouts)
+  ___ (on-press toggle-vkey pseudo.sft)
+  caps caps
+)
+
 (defalias
-  caps-dance (tap-dance 300 ((on-press toggle-vkey pseudo.sft) caps))
-  p.caps (multi f24 (tap-hold-press $tt $ht @caps-dance (layer-toggle caps-overrides)))
+  on.caps (one-shot 500 (layer-toggle changelayouts))
+  p.caps (multi f24 (tap-hold-release $pinky.tt $ht @on.caps (layer-toggle caps-overrides)))
 )
 
 (deflayer programmer
-  _    @plus     @sbracl    @bracl    @prthl    @equal   @and     @prthr    @bracr    @sbracr    @aster    @excl    @at   bspc
+  @esc    @plus     @sbracl    @bracl    @prthl    @equal   @and     @prthr    @bracr    @sbracr    @aster    @excl    @at   bspc
   _  _     _    _    _    _    _    _    _    _    _    grv    @dollar  _ 
   @p.caps _     _    _    _    _    _    _    _    _    ;    @fslash    @hash
   _ _     _    _    _    _    _    _    _    -    @dot    @comma  _  _ 
