@@ -32,7 +32,10 @@
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
-    extraConfig = ''hide_window_decorations yes'';
+    extraConfig = ''
+      hide_window_decorations yes
+      font_size 14.0
+    '';
   };
 
   programs.git = {
