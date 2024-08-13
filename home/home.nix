@@ -19,6 +19,8 @@
   services.flatpak = { 
     enable = true;
     packages = [
+    "org.torproject.torbrowser-launcher"
+    "org.signal.Signal"
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"
     "com.discordapp.Discord"
