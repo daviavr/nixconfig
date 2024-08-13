@@ -19,7 +19,6 @@
   services.flatpak = { 
     enable = true;
     packages = [
-    "com.obsproject.Studio"
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"
     "com.discordapp.Discord"
@@ -38,6 +37,11 @@
     enable = true;
     userName = "Davi Reis";
     userEmail = "daviavr@gmail.com";
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    #plugins = with pkgs; [ obs-studio-plugins.obs-pipewire-audio-capture ];
   };
 
   programs.zsh = {
