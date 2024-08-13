@@ -133,7 +133,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    obs-studio
+    ffmpeg
     direnv
     keyd
     tmux

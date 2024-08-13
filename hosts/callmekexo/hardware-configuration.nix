@@ -33,6 +33,19 @@
     } 
   ];
 
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      onevpl-intel-gpu
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
+  };
+
+  environment.variables = { LIBVA_DRIVER_NAME = "iHD"; };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
