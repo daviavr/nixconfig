@@ -88,7 +88,7 @@
   users.users.davi = {
     isNormalUser = true;
     description = "Davi Reis";
-    extraGroups = [ "networkmanager" "wheel" "uinput"];
+    extraGroups = [ "networkmanager" "wheel" "uinput" "adbusers"];
     shell = pkgs.zsh;
   };
 
@@ -114,8 +114,10 @@
         DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
         SearchBar = "unified"; # alternative: "separate"
     };
-
   };
+
+  programs.adb.enable = true;
+
   programs.zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
