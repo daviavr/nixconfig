@@ -134,6 +134,7 @@
 
   environment.systemPackages = with pkgs; [
     neovim
+    chromium
     git
     tor-browser
     ffmpeg
