@@ -43,6 +43,14 @@
     theme = "Gruvbox Dark";
   };
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.normal.family = "DejaVuSansMono";
+      font.size = 18;
+    };
+  };
+
   programs.git = {
     enable = true;
     userName = "Davi Reis";
@@ -79,6 +87,13 @@
       theme = "robbyrussell";
     };
   };
+
+  programs.direnv = {
+      enable = true;
+      enableZshIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+
 
   programs.vscode = {
     enable = true;

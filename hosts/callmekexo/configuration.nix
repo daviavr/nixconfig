@@ -137,12 +137,12 @@
     gcc
     lua51Packages.lua
     lua51Packages.luarocks
-    chromium
+    ungoogled-chromium
     zed-editor
     git
+    unzip
     tor-browser
     ffmpeg
-    direnv
     keyd
     tmux
     texlive.combined.scheme-full
@@ -150,6 +150,8 @@
     gparted
     kitty
     kitty-themes
+    alacritty
+    alacritty-theme
   ];
 
   fonts.packages = with pkgs; [ nerdfonts ];
