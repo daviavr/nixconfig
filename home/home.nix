@@ -19,6 +19,7 @@
   services.flatpak = { 
     enable = true;
     packages = [
+    "in.cinny.Cinny"
     "org.torproject.torbrowser-launcher"
     "org.signal.Signal"
     "md.obsidian.Obsidian"
@@ -34,8 +35,12 @@
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
       hide_window_decorations yes
-      font_size 14.0
     '';
+    font = {
+      name = "DejaVuSansMono";
+      size = 18;
+    };
+    theme = "Gruvbox Dark";
   };
 
   programs.git = {
@@ -49,9 +54,16 @@
     plugins = [ pkgs.obs-studio-plugins.obs-vaapi ];
   };
 
-  programs.zsh = {
+  programs.neovim = {
     enable = true;
 
+    vimAlias = true;
+    viAlias = true;
+    vimdiffAlias = true;
+  };
+
+  programs.zsh = {
+    enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;

@@ -133,8 +133,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim
+    ripgrep
+    gcc
+    lua51Packages.lua
+    lua51Packages.luarocks
     chromium
+    zed-editor
     git
     tor-browser
     ffmpeg
@@ -145,7 +149,10 @@
     gnome.dconf-editor
     gparted
     kitty
+    kitty-themes
   ];
+
+  fonts.packages = with pkgs; [ nerdfonts ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
