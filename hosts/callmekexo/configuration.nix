@@ -133,6 +133,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    wmctrl
+    tdrop
     ripgrep
     gcc
     lua51Packages.lua

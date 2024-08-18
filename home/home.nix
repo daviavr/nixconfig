@@ -8,6 +8,7 @@
     wl-clipboard 
     gnomeExtensions.pop-shell
     pop-launcher
+    gnomeExtensions.appindicator
     gnomeExtensions.ddterm
     gnomeExtensions.another-window-session-manager
     gnomeExtensions.no-overview
@@ -35,6 +36,7 @@
     shellIntegration.enableZshIntegration = true;
     extraConfig = ''
       hide_window_decorations yes
+      enable_audio_bell no
     '';
     font = {
       name = "DejaVuSansMono";
