@@ -41,6 +41,7 @@
     ];
     extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
   };
+  hardware.sensor.iio.enable = true;
 
   #Set the default driver to be intel-media-driver
   #environment.variables = { LIBVA_DRIVER_NAME = "iHD"; };

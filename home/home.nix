@@ -22,7 +22,6 @@
     packages = [
     "io.dbeaver.DBeaverCommunity"
     "in.cinny.Cinny"
-    "org.torproject.torbrowser-launcher"
     "org.signal.Signal"
     "md.obsidian.Obsidian"
     "dev.vencord.Vesktop"

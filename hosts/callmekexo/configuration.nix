@@ -141,6 +141,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    pulseaudio
     wmctrl
     tdrop
     ripgrep
@@ -149,9 +150,9 @@
     lua51Packages.luarocks
     ungoogled-chromium
     zed-editor
+    tor-browser
     git
     unzip
-    tor-browser
     ffmpeg
     keyd
     tmux
@@ -162,6 +163,14 @@
     kitty-themes
     alacritty
     alacritty-theme
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in 
+     pkgs.buildFHSUserEnv (base // {
+     name = "fhs";
+     targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config]; 
+     profile = "export FHS=1"; 
+     runScript = "zsh"; 
+     extraOutputsToInstall = ["dev"];
+   }))
   ];
 
   fonts.packages = with pkgs; [ nerdfonts ];
