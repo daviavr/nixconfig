@@ -132,6 +132,14 @@
     options = "--delete-older-than 15d";
   };
 
+  virtualisation.docker = { 
+    rootless = { 
+      enable = true;
+      setSocketVariable = true;
+    };
+    daemon.settings = {data-root = "/home/davi/.docker/data";};
+  };
+
   environment.systemPackages = with pkgs; [
     wmctrl
     tdrop

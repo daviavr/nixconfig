@@ -20,6 +20,7 @@
   services.flatpak = { 
     enable = true;
     packages = [
+    "io.dbeaver.DBeaverCommunity"
     "in.cinny.Cinny"
     "org.torproject.torbrowser-launcher"
     "org.signal.Signal"
