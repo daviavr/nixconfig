@@ -2,15 +2,12 @@
 
 {
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
       ../../modules
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];  
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "callmekexo"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -52,12 +49,14 @@
     overrideDevices = true;
     overrideFolders = true;
     settings = {
-      devices."pixel8" = {id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";};
+      devices."pixel8" = {
+        id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";
+      };
       folders."documentos" = {
         id = "c3qdq-tyyre";
         path = "/home/davi/Documents";
         name = "callmekexo";
-	devices = [ "pixel8" ];
+        devices = [ "pixel8" ];
       };
     };
   };
@@ -88,31 +87,31 @@
   users.users.davi = {
     isNormalUser = true;
     description = "Davi Reis";
-    extraGroups = [ "networkmanager" "wheel" "uinput" "adbusers"];
+    extraGroups = [ "networkmanager" "wheel" "uinput" "adbusers" ];
     shell = pkgs.zsh;
   };
 
-  programs.firefox = { 
+  programs.firefox = {
     enable = true;
     policies = {
-        DisableTelemetry = true;
-        DisableFirefoxStudies = true;
-        EnableTrackingProtection = {
-          Value= true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
-        };
-        DisablePocket = true;
-        DisableFirefoxAccounts = true;
-        DisableAccounts = true;
-        DisableFirefoxScreenshots = true;
-        OverrideFirstRunPage = "";
-        OverridePostUpdatePage = "";
-        DontCheckDefaultBrowser = true;
-        DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "newtab"
-        DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-        SearchBar = "unified"; # alternative: "separate"
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+      DisablePocket = true;
+      DisableFirefoxAccounts = true;
+      DisableAccounts = true;
+      DisableFirefoxScreenshots = true;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+      DontCheckDefaultBrowser = true;
+      DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "newtab"
+      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+      SearchBar = "unified"; # alternative: "separate"
     };
   };
 
@@ -132,12 +131,12 @@
     options = "--delete-older-than 15d";
   };
 
-  virtualisation.docker = { 
-    rootless = { 
+  virtualisation.docker = {
+    rootless = {
       enable = true;
       setSocketVariable = true;
     };
-    daemon.settings = {data-root = "/home/davi/.docker/data";};
+    daemon.settings = { data-root = "/home/davi/.docker/data"; };
   };
 
   environment.systemPackages = with pkgs; [
@@ -152,6 +151,8 @@
     zed-editor
     tor-browser
     git
+    nixpkgs-fmt
+    nil
     unzip
     ffmpeg
     keyd
@@ -163,14 +164,16 @@
     kitty-themes
     alacritty
     alacritty-theme
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in 
-     pkgs.buildFHSUserEnv (base // {
-     name = "fhs";
-     targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config]; 
-     profile = "export FHS=1"; 
-     runScript = "zsh"; 
-     extraOutputsToInstall = ["dev"];
-   }))
+    (
+      let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+      pkgs.buildFHSUserEnv (base // {
+        name = "fhs";
+        targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config ];
+        profile = "export FHS=1";
+        runScript = "zsh";
+        extraOutputsToInstall = [ "dev" ];
+      })
+    )
   ];
 
   fonts.packages = with pkgs; [ nerdfonts ];

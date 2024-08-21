@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "rtsx_pci_sdmmc" ];
@@ -14,23 +15,30 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2781c056-ab4e-42cf-804b-49ccb4f9e30b";
+    {
+      device = "/dev/disk/by-uuid/2781c056-ab4e-42cf-804b-49ccb4f9e30b";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3487-D721";
+    {
+      device = "/dev/disk/by-uuid/3487-D721";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   zramSwap.enable = true;
-  swapDevices = [ 
+  swapDevices = [
     {
       device = "/dev/nvme0n1p4";
       randomEncryption.enable = true;
-    } 
+    }
   ];
 
   hardware.opengl = {
