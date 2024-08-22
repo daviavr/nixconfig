@@ -1,6 +1,10 @@
 { config, pkgs, inputs, ... }:
 {
-  imports = [ inputs.flatpaks.homeManagerModules.nix-flatpak ];
+  imports = [ 
+  inputs.flatpaks.homeManagerModules.nix-flatpak 
+  ../../home-modules
+  ];
+
   home.username = "davi";
   home.homeDirectory = "/home/davi";
 

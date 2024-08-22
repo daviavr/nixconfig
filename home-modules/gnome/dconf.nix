@@ -2,7 +2,6 @@
 { lib, ... }:
 
 with lib.hm.gvariant;
-
 {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -17,13 +16,13 @@ with lib.hm.gvariant;
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
       maximize = [ "<Shift><Super>y" ];
-      minimize = [];
+      minimize = [ ];
       move-to-workspace-1 = [ "<Shift><Super>u" ];
       move-to-workspace-2 = [ "<Shift><Super>i" ];
       move-to-workspace-3 = [ "<Shift><Super>o" ];
       move-to-workspace-4 = [ "<Shift><Super>n" ];
-      switch-input-source = [];
-      switch-input-source-backward = [];
+      switch-input-source = [ ];
+      switch-input-source-backward = [ ];
       switch-to-workspace-1 = [ "<Super>u" ];
       switch-to-workspace-2 = [ "<Super>i" ];
       switch-to-workspace-3 = [ "<Super>o" ];
@@ -38,7 +37,7 @@ with lib.hm.gvariant;
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
       mic-mute = [ "<Shift><Super>m" ];
-      screensaver = [];
+      screensaver = [ ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -86,12 +85,12 @@ with lib.hm.gvariant;
       fullscreen-launcher = false;
       hint-color-rgba = "rgb(0,97,230)";
       mouse-cursor-follows-active-window = false;
-      pop-monitor-down = [];
-      pop-monitor-left = [];
-      pop-monitor-right = [];
-      pop-monitor-up = [];
-      pop-workspace-down = [];
-      pop-workspace-up = [];
+      pop-monitor-down = [ ];
+      pop-monitor-left = [ ];
+      pop-monitor-right = [ ];
+      pop-monitor-up = [ ];
+      pop-workspace-down = [ ];
+      pop-workspace-up = [ ];
       search = [ "<Super>d" ];
       show-skip-taskbar = true;
       stacking-with-mouse = false;
@@ -110,9 +109,9 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      focus-active-notification = [];
+      focus-active-notification = [ ];
       toggle-message-tray = [ "<Super>v" ];
-      toggle-quick-settings = [];
+      toggle-quick-settings = [ ];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {

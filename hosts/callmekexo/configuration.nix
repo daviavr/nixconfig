@@ -4,47 +4,13 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./home.nix
       ../../modules
     ];
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs.flake-inputs = inputs;
-  home-manager.users.davi = import ./home.nix;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   networking.hostName = "callmekexo"; # Define your hostname.
-  networking.networkmanager.enable = true;
 
-  networking.firewall = {
-    allowedTCPPorts = [ 8384 22000 ];
-    allowedUDPPorts = [ 22000 21027 ];
-  };
-
-  time.timeZone = "America/Sao_Paulo";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
-  };
-
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.flatpak.enable = true;
+  home-manager.extraSpecialArgs.inputs = inputs;
+  home-manager.users.davi = import ./home.nix;
 
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
   services.syncthing = {

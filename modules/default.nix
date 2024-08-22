@@ -4,6 +4,5 @@
     ./tlp
     #./keyd
     ./kanata
-    ./gnome
   ];
 }
