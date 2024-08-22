@@ -1,8 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
   imports = [ 
   inputs.flatpaks.homeManagerModules.nix-flatpak 
-  ../../home-modules
   ];
 
   home.username = "davi";
@@ -10,15 +9,7 @@
 
   home.packages = with pkgs; [ 
     wl-clipboard 
-    gnomeExtensions.pop-shell
     pop-launcher
-    gnomeExtensions.appindicator
-    gnomeExtensions.ddterm
-    gnomeExtensions.another-window-session-manager
-    gnomeExtensions.no-overview
-    gnomeExtensions.window-is-ready-remover
-    gnomeExtensions.grand-theft-focus
-    gnomeExtensions.caffeine
   ];
 
   services.flatpak = { 

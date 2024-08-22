@@ -1,8 +1,6 @@
-# Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
 { lib, ... }:
-
-with lib.hm.gvariant;
-{
+with lib.hm.gvariant; {
+  dconf.enable = true;
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -141,6 +139,5 @@ with lib.hm.gvariant;
       window-position = mkTuple [ 26 23 ];
       window-size = mkTuple [ 1231 902 ];
     };
-
   };
 }
