@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -39,6 +39,11 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.flatpak.enable = true;
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs.inputs = inputs;
+  home-manager.users.davi = import ./home.nix;
 
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
   services.syncthing = {

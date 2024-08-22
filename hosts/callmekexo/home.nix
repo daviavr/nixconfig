@@ -1,6 +1,6 @@
-{ config, pkgs, flake-inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
-  imports = [ flake-inputs.flatpaks.homeManagerModules.nix-flatpak ];
+  imports = [ inputs.flatpaks.homeManagerModules.nix-flatpak ];
   home.username = "davi";
   home.homeDirectory = "/home/davi";
 

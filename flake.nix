@@ -12,29 +12,19 @@
     flatpaks.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
   };
 
-  outputs = { self, nixpkgs, home-manager, flatpaks, ... }@inputs: {
-    nixosConfigurations = {
-      iamkexo = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, flatpaks, ... }@inputs:
+    let
+      globalNixModules = [ home-manager.nixosModules.home-manager ];
+      defaultConfig = hostModulesDefinition: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/iamkexo/configuration.nix
-        ];
+        modules = globalNixModules ++ hostModulesDefinition;
       };
-      callmekexo = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/callmekexo/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs.flake-inputs = inputs;
-            home-manager.users.davi = import ./home/home.nix;
-          }
-        ];
+    in
+    {
+      nixosConfigurations = {
+        iamkexo = defaultConfig [ ./hosts/iamkexo/configuration.nix ];
+        callmekexo = defaultConfig [ ./hosts/callmekexo/configuration.nix ];
       };
     };
-  };
 }
