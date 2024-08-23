@@ -17,6 +17,7 @@ in
     ]) ++ (with pkgs.gnome; [
       gnome-contacts
       evince # document viewer
+      epiphany
     ]);
 
     home-manager.users.davi = { lib, ... }: {
@@ -24,27 +25,21 @@ in
         enable = true;
         settings = import ./dconf.nix lib.hm.gvariant;
       };
-      home.packages =
-        let
-          gnomeExtensions = with pkgs.gnomeExtensions;
-            [
-              pop-shell
-              appindicator
-              ddterm
-              another-window-session-manager
-              no-overview
-              window-is-ready-remover
-              grand-theft-focus
-              caffeine
-            ];
-          gnomePackages = with pkgs; [
-            pop-launcher
-            gnome.dconf-editor
-            wmctrl
-            tdrop
-          ];
-        in
-        gnomeExtensions ++ gnomePackages;
+      home.packages = (with pkgs.gnomeExtensions; [
+        pop-shell
+        appindicator
+        ddterm
+        another-window-session-manager
+        no-overview
+        window-is-ready-remover
+        grand-theft-focus
+        caffeine
+      ]) ++ (with pkgs; [
+        pop-launcher
+        gnome.dconf-editor
+        wmctrl
+        tdrop
+      ]);
     };
   };
 

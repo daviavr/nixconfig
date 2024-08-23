@@ -15,11 +15,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/2781c056-ab4e-42cf-804b-49ccb4f9e30b";

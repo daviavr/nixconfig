@@ -25,6 +25,11 @@ in
         kitty
         kitty-themes
       ];
+      home.file.".local/scripts/dropdown-kitty.sh" = {
+        enable = true;
+        executable = true;
+        text = "#!/bin/sh\nKITTY_DISABLE_WAYLAND=1 tdrop -mta kitty --class dropdown --name dropdown -T dropdown";
+      };
     };
   };
 }
