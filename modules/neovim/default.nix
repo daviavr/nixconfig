@@ -19,6 +19,11 @@ in
         lua51Packages.luarocks
         nixpkgs-fmt
       ];
+      home.file."nvim" = {
+        enable = true;
+        source = ./nvim;
+        target = ".config/nvim";
+      };
     };
   };
 }
