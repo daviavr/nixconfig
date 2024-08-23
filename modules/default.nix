@@ -2,8 +2,21 @@
   imports = [
     ./workstation
     ./tlp
-    #./keyd
+    ./keyd
     ./kanata
     ./gnome
+    ./firefox
+    ./docker
+    ./syncthing
+    ./pipewire
+    ./flatpak
+    ./kitty
+    ./alacritty
+    ./git
+    ./obs-studio
+    ./zsh
+    ./neovim
+    ./direnv
+    ./vscode
   ];
 }
