@@ -1,8 +1,8 @@
 {
   imports = [
-    #./workstation
-    #./keyd
+    ./workstation
     ./tlp
+    #./keyd
     ./kanata
     ./gnome
   ];
