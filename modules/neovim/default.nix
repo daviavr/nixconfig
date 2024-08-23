@@ -13,7 +13,12 @@ in
         viAlias = true;
         vimdiffAlias = true;
       };
-      home.programs = with pkgs; [ wl-clipboard ];
+      home.packages = with pkgs; [
+        wl-clipboard
+        lua51Packages.lua
+        lua51Packages.luarocks
+        nixpkgs-fmt
+      ];
     };
   };
 }

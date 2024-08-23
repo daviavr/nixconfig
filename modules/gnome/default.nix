@@ -24,17 +24,27 @@ in
         enable = true;
         settings = import ./dconf.nix lib.hm.gvariant;
       };
-      home.packages = with pkgs.gnomeExtensions; [
-        pop-shell
-        appindicator
-        ddterm
-        another-window-session-manager
-        no-overview
-        window-is-ready-remover
-        grand-theft-focus
-        caffeine
-        pkgs.pop-launcher
-      ];
+      home.packages =
+        let
+          gnomeExtensions = with pkgs.gnomeExtensions;
+            [
+              pop-shell
+              appindicator
+              ddterm
+              another-window-session-manager
+              no-overview
+              window-is-ready-remover
+              grand-theft-focus
+              caffeine
+            ];
+          gnomePackages = with pkgs; [
+            pop-launcher
+            gnome.dconf-editor
+            wmctrl
+            tdrop
+          ];
+        in
+        gnomeExtensions ++ gnomePackages;
     };
   };
 

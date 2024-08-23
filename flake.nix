@@ -20,6 +20,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/${hostname}/configuration.nix
+            { networking.hostName = hostname; }
             home-manager.nixosModules.home-manager
             {
               home-manager = {

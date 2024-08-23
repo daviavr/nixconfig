@@ -7,18 +7,24 @@ in
 
   options = { modules.kitty.enable = mkEnableOption "kitty"; };
   config = mkIf cfg.enable {
-    home-manager.users.davi.programs.kitty = {
-      enable = true;
-      shellIntegration.enableZshIntegration = true;
-      extraConfig = ''
-        hide_window_decorations yes
-        enable_audio_bell no
-      '';
-      font = {
-        name = "DejaVuSansMono";
-        size = 18;
+    home-manager.users.davi = {
+      programs.kitty = {
+        enable = true;
+        shellIntegration.enableZshIntegration = true;
+        extraConfig = ''
+          hide_window_decorations yes
+          enable_audio_bell no
+        '';
+        font = {
+          name = "DejaVuSansMono";
+          size = 18;
+        };
+        theme = "Gruvbox Dark";
       };
-      theme = "Gruvbox Dark";
+      home.packages = with pkgs; [
+        kitty
+        kitty-themes
+      ];
     };
   };
 }

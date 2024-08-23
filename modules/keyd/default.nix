@@ -7,6 +7,7 @@ in
 
   options = { modules.keyd.enable = mkEnableOption "keyd"; };
   config = mkIf cfg.enable {
+    environment.systemPackages = [pkgs.keyd];
     systemd.services.keyd = {
       description = "key remapping daemon";
       enable = true;

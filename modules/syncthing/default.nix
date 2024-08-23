@@ -21,7 +21,7 @@ in
         folders."documentos" = {
           id = "c3qdq-tyyre";
           path = "/home/davi/Documents";
-          name = "callmekexo";
+          name = "${config.networking.hostName}";
           devices = [ "pixel8" ];
         };
       };

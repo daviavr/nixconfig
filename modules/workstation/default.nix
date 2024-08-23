@@ -9,17 +9,16 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nixpkgs.config.allowUnfree = true;
+
     services.xserver.xkb = {
       layout = "br";
       variant = "";
     };
 
     console.keyMap = "br-abnt2";
-
     #services.printing.enable = true;
-
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 
     time.timeZone = "America/Sao_Paulo";
 
@@ -38,8 +37,6 @@ in
       LC_TIME = "pt_BR.UTF-8";
     };
 
-    networking.hostName = "callmekexo"; # Define your hostname.
-
     users.users.davi = {
       isNormalUser = true;
       description = "Davi Reis";
@@ -50,8 +47,8 @@ in
     programs.adb.enable = true;
 
     programs.zsh.enable = true;
+    modules.zsh.enable = true;
 
-    nixpkgs.config.allowUnfree = true;
     nix.optimise.automatic = true;
     nix.extraOptions = ''
       min-free = ${toString (100 * 1024 * 1024)}
@@ -64,29 +61,12 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      wmctrl
-      tdrop
-      ripgrep
-      gcc
-      lua51Packages.lua
-      lua51Packages.luarocks
       ungoogled-chromium
-      zed-editor
-      tor-browser
-      git
-      nixpkgs-fmt
-      nil
       unzip
+      git
+      gcc
+      ripgrep
       ffmpeg
-      keyd
-      tmux
-      texlive.combined.scheme-full
-      gnome.dconf-editor
-      gparted
-      kitty
-      kitty-themes
-      alacritty
-      alacritty-theme
       (
         let base = pkgs.appimageTools.defaultFhsEnvArgs; in
         pkgs.buildFHSUserEnv (base // {
