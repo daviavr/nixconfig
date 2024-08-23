@@ -24,6 +24,15 @@ in
           "com.github.wwmm.easyeffects"
         ];
       };
+      home.file =
+        let
+          presetsDir = ".var/app/com.github.wwmm.easyeffects/config/easyeffects/";
+        in
+        {
+          autoload = { enable = true; source = ./easyeffects/autoload; target = presetsDir + "autoload"; recursive = true; };
+          input = { enable = true; source = ./easyeffects/input; target = presetsDir + "input"; recursive = true; };
+          output = { enable = true; source = ./easyeffects/output; target = presetsDir + "output"; recursive = true; };
+        };
     };
   };
 }
