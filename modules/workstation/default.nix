@@ -1,12 +1,11 @@
-{ pkgs, lib, inputs, ... }:
-{
+{ lib, pkgs, input, ... }: {
+  networking.hostName = "callmekexo"; # Define your hostname.
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.flatpak.enable = true;
 
   home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = false;
-  home-manager.extraSpecialArgs.inputs = lib.mkDefault inputs;
 
   time.timeZone = "America/Sao_Paulo";
 
@@ -25,4 +24,143 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
+  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
+  services.syncthing = {
+    enable = true;
+    user = "davi";
+    dataDir = "/home/davi/Documents";
+    configDir = "/home/davi/.config/syncthing";
+    overrideDevices = true;
+    overrideFolders = true;
+    settings = {
+      devices."pixel8" = {
+        id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";
+      };
+      folders."documentos" = {
+        id = "c3qdq-tyyre";
+        path = "/home/davi/Documents";
+        name = "callmekexo";
+        devices = [ "pixel8" ];
+      };
+    };
+  };
+
+  services.xserver.xkb = {
+    layout = "br";
+    variant = "";
+  };
+
+  console.keyMap = "br-abnt2";
+
+  services.printing.enable = true;
+
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    wireplumber.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = false;
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  users.users.davi = {
+    isNormalUser = true;
+    description = "Davi Reis";
+    extraGroups = [ "networkmanager" "wheel" "uinput" "adbusers" ];
+    shell = pkgs.zsh;
+  };
+
+  programs.firefox = {
+    enable = true;
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+      DisablePocket = true;
+      DisableFirefoxAccounts = true;
+      DisableAccounts = true;
+      DisableFirefoxScreenshots = true;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+      DontCheckDefaultBrowser = true;
+      DisplayBookmarksToolbar = "newtab"; # alternatives: "always" or "newtab"
+      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+      SearchBar = "unified"; # alternative: "separate"
+    };
+  };
+
+  programs.adb.enable = true;
+
+  programs.zsh.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+  nix.optimise.automatic = true;
+  nix.extraOptions = ''
+    min-free = ${toString (100 * 1024 * 1024)}
+    max-free = ${toString (1024 * 1024 * 1024)}
+  '';
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+
+  virtualisation.docker = {
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    daemon.settings = { data-root = "/home/davi/.docker/data"; };
+  };
+
+  environment.systemPackages = with pkgs; [
+    pulseaudio
+    wmctrl
+    tdrop
+    ripgrep
+    gcc
+    lua51Packages.lua
+    lua51Packages.luarocks
+    ungoogled-chromium
+    zed-editor
+    tor-browser
+    git
+    nixpkgs-fmt
+    nil
+    unzip
+    ffmpeg
+    keyd
+    tmux
+    texlive.combined.scheme-full
+    gnome.dconf-editor
+    gparted
+    kitty
+    kitty-themes
+    alacritty
+    alacritty-theme
+    (
+      let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+      pkgs.buildFHSUserEnv (base // {
+        name = "fhs";
+        targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config ];
+        profile = "export FHS=1";
+        runScript = "zsh";
+        extraOutputsToInstall = [ "dev" ];
+      })
+    )
+  ];
+
+  fonts.packages = with pkgs; [ nerdfonts ];
+
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
