@@ -40,6 +40,11 @@ in
         wmctrl
         tdrop
       ]);
+      home.file."config.json" = {
+          enable = true;
+          source = ./floating-window-exception.json;
+          target = ".config/pop-shell/config.json";
+        };
     };
   };
 
