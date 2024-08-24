@@ -37,8 +37,6 @@ in
       ]) ++ (with pkgs; [
         pop-launcher
         gnome.dconf-editor
-        wmctrl
-        tdrop
       ]);
       home.file."config.json" = {
           enable = true;

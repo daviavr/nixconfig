@@ -22,6 +22,8 @@ in
         theme = "Gruvbox Dark";
       };
       home.packages = with pkgs; [
+        wmctrl
+        tdrop
         kitty
         kitty-themes
       ];

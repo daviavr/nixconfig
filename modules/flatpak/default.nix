@@ -26,12 +26,10 @@ in
       };
       home.file =
         let
-          presetsDir = ".var/app/com.github.wwmm.easyeffects/config/easyeffects/";
+          presetsDir = "~/.var/app/com.github.wwmm.easyeffects/config/easyeffects/";
         in
         {
-          autoload = { enable = true; source = ./easyeffects/autoload; target = presetsDir + "autoload"; recursive = true; };
-          input = { enable = true; source = ./easyeffects/input; target = presetsDir + "input"; recursive = true; };
-          output = { enable = true; source = ./easyeffects/output; target = presetsDir + "output"; recursive = true; };
+          ".local/scripts/copy.sh" = { enable = true; executable = true; text = "#!/usr/bin/env bash\n\nmkdir -p ${presetsDir}\ncp -rf ${./easyeffects}/* ${presetsDir}"; };
         };
     };
   };

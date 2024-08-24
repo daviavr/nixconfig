@@ -18,5 +18,6 @@
     ./neovim
     ./direnv
     ./vscode
+    ./sway
   ];
 }
