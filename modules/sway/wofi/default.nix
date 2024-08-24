@@ -2,7 +2,7 @@
 {
   home-manager.users.davi = {
     programs.wofi = {
-      enable = enable;
+      enable = true;
       style = builtins.readFile ./wofi.conf;
     };
   };
