@@ -42,9 +42,9 @@ in
       gtk.enable = true;
     };
 
-    #wayland.windowManager.sway.config.seat."*" = {
-    #  xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
-    #};
+    wayland.windowManager.sway.config.seat."*" = {
+      xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
+    };
 
   };
 }
