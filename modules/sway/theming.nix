@@ -1,22 +1,22 @@
 { pkgs, lib, config, home-manager, ... }:
 let
   cursorTheme = "Bibata-Modern-Classic";
-  cursorSize = 20;
+  cursorSize = 24;
   cursorPackage = pkgs.bibata-cursors;
 in
 {
+  programs.dconf.enable = true;
   home-manager.users.davi = {
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
+    dconf = {
+      enable = true;
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
       };
     };
     gtk = {
       enable = true;
-      theme = {
-        name = "Adwaita-dark";
-        package = pkgs.gnome.gnome-themes-extra;
-      };
       gtk3 = {
         extraConfig.gtk-application-prefer-dark-theme = true;
       };

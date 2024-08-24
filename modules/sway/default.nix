@@ -57,6 +57,10 @@ in
       wayland.windowManager.sway = {
         enable = true;
         extraConfigEarly = "exec systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service\n";
+        extraConfig = ''
+          default_border pixel 5
+          default_floating_border pixel 5
+        '';
         xwayland = true;
         config = rec {
           modifier = "${mod}";
@@ -69,14 +73,24 @@ in
             mode = "3440x1440@144Hz";
           };
           defaultWorkspace = "workspace number 1";
-          startup = [{ command = "${pkgs.swayosd}/bin/swayosd-server"; }];
+          startup = [
+            { command = "${pkgs.swayosd}/bin/swayosd-server"; }
+            { command = "${pkgs.flatpak}/bin/flatpak com.github.wwmm.easyeffects --gapplication-service"; }
+            { command = "${pkgs.ungoogled-chromium}/bin/chromium"; }
+            #{ command = "${pkgs.flatpak}/bin/flatpak run dev.vencord.Vesktop"; }
+            #{ command = "${pkgs.flatpak}/bin/flatpak run md.obsidian.Obsidian"; }
+            { command = "${pkgs.flatpak}/bin/flatpak run com.spotify.Client"; }
+          ];
           bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
           window = {
             commands = [
-              { criteria.app_id = "dropdown"; command = "border pixel 5; move scratchpad"; }
+              { criteria.app_id = ".*"; command = "border pixel 5"; }
+              { criteria.class = ".*"; command = "border pixel 5"; }
+              { criteria.app_id = "dropdown"; command = "border pixel 3; move scratchpad"; }
               { criteria.app_id = "dropdown"; command = "move absolute position 0 0"; }
               #{ criteria.app_id = "dropdown"; command = "resize set 100ppt 40ppt"; }
             ];
+            titlebar = false;
           };
           floating.criteria = let ins = "^(?i)"; in
             [
