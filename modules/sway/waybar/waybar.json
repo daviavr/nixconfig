@@ -1,0 +1,126 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "margin-top": 2,
+    "margin-left": 2,
+    "margin-right": 2,
+    "margin-bottom": 3,
+    "spacing": 12,
+    "height": 30,
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "clock#time",
+        "clock#date",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "tray",
+        "idle_inhibitor",
+        "network",
+        "custom/notification"
+    ],
+
+        "custom/separator-right": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/separator-left": {
+        "format": "",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pypr toggle pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "sway/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "clock#time": {
+        "locale": "pt_BR.UTF-8",
+        "timezone": "Brazil/Sao_Paulo",
+        "format": "{:L%H:%M}"
+    },
+    "clock#date": {
+        "locale": "pt_BR.UTF-8",
+        "timezone": "Brazil/Sao_Paulo",
+        "format": "{:L%a %d de %B}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "custom/ddcutil": {
+    "format": "{percentage}%  {icon}",
+    "interval": 1,
+    "format-icons": ["", "", ""],
+    "exec": "$HOME/.config/waybar/ddcutil.py",
+    "return-type": "json",
+    "on-scroll-up": "ddcutil setvcp 10 + 10",
+    "on-scroll-down": "ddcutil setvcp 10 - 10"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+          "notification": "<span foreground='white'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='white'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='white'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+      },
+    "network": {
+    "format": "{ifname}",
+    "format-wifi": "  ({signalStrength}%)",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "  ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+}
+
+}

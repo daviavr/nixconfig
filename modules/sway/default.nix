@@ -2,14 +2,11 @@
 with lib;
 let
   mod = "Mod4";
-  cursorTheme = "Bibata-Modern-Classic";
-  cursorSize = 20;
-  cursorPackage = pkgs.bibata-cursors;
-  drun = "pkill wofi || wofi --show drun";
-  currPath = ./.;
+  drun = "pkill wofi || ${pkgs.wofi}/bin/wofi --show drun";
   cfg = config.modules.sway;
 in
 {
+  imports = [ ./theming.nix ./wofi ./waybar ];
   options.modules.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
@@ -42,10 +39,12 @@ in
     services.gvfs.enable = true;
     users.users.davi.packages = with pkgs;
       [
+        swayosd
         swaybg
         texlive.combined.scheme-full
         gnome.nautilus
         gnome-text-editor
+        networkmanagerapplet
       ];
 
     programs.sway = {
@@ -54,34 +53,9 @@ in
     };
 
     home-manager.users.davi = {
-      gtk = {
-        enable = true;
-        gtk3 = {
-          extraConfig.gtk-application-prefer-dark-theme = true;
-        };
-        gtk4 = {
-          extraConfig.gtk-application-prefer-dark-theme = true;
-        };
-      };
-
-      home.pointerCursor = {
-        name = cursorTheme;
-        package = cursorPackage;
-        size = cursorSize;
-        x11 = {
-          enable = true;
-          defaultCursor = cursorTheme;
-        };
-        gtk.enable = true;
-      };
-
-      programs.wofi = {
-        enable = true;
-        style = builtins.readFile ./wofi.conf;
-      };
-
       wayland.windowManager.sway = {
         enable = true;
+        extraConfigEarly = "exec systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service\n";
         xwayland = true;
         config = rec {
           modifier = "${mod}";
@@ -94,15 +68,29 @@ in
             mode = "3440x1440@144Hz";
           };
           defaultWorkspace = "workspace number 1";
-          startup = [{ command = "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service"; }];
+          startup = [{ command = "${pkgs.swayosd}/bin/swayosd-server"; }];
+          bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
           window = {
             commands = [
-              { criteria.app_id = "dropdown"; command = "border pixel 2; move scratchpad"; }
+              { criteria.app_id = "dropdown"; command = "border pixel 5; move scratchpad"; }
               { criteria.app_id = "dropdown"; command = "move absolute position 0 0"; }
-              { criteria.app_id = "dropdown"; command = "resize set 100ppt 40ppt"; }
+              #{ criteria.app_id = "dropdown"; command = "resize set 100ppt 40ppt"; }
             ];
           };
-          #floating.criteria = [{ app_id = "dropdown"; }];
+          floating.criteria = let ins = "^(?i)"; in
+            [
+              { app_id = ins + "vesktop"; }
+              { class = ins + "Spotify"; }
+              { app_id = ins + "org.gnome.Nautilus"; }
+            ];
+          assigns = let ins = "^(?i)"; in
+            {
+              "1" = [{ class = ins + "Chromium-browser"; }];
+              "4" = [
+                { app_id = ins + "vesktop"; }
+                { class = ins + "Spotify"; }
+              ];
+            };
           keybindings = mkOptionDefault {
             "${mod}+u" = "workspace number 1";
             "${mod}+i" = "workspace number 2";
@@ -121,15 +109,17 @@ in
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+space" = "focus mode_toggle";
             "${mod}+s" = "layout stacking";
-            "${mod}+e" = "layout toggle split";
+            "${mod}+w" = "split toggle";
+            "${mod}+Shift+w" = "layout toggle split";
             "${mod}+q" = "kill";
             "${mod}+d" = "exec ${drun}";
-          };
-          seat."*" = {
-            xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
+            "XF86AudioRaiseVolume" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume 5";
+            "XF86AudioLowerVolume" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume -5";
+            "XF86AudioMute" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle";
+            "--release Caps_Lock" = "exec ${pkgs.swayosd}/bin/swayosd-client --caps-lock";
+            "${mod}+Shift+m" = "exec ${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle";
           };
         };
-
       };
     };
   };
