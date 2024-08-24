@@ -7,6 +7,7 @@ let
 in
 {
   imports = [ ./theming.nix ./wofi ./waybar ];
+
   options.modules.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {

@@ -5,18 +5,19 @@ let
   cursorPackage = pkgs.bibata-cursors;
 in
 {
-  programs.dconf.enable = true;
+  #environment.sessionVariables = lib.mkDefault config.home-manager.users.davi.home.sessionVariables;
   home-manager.users.davi = {
-    dconf = {
-      enable = true;
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-        };
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
       };
     };
     gtk = {
       enable = true;
+      theme = {
+        name = "Adwaita-dark";
+        package = pkgs.gnome.gnome-themes-extra;
+      };
       gtk3 = {
         extraConfig.gtk-application-prefer-dark-theme = true;
       };
@@ -41,9 +42,9 @@ in
       gtk.enable = true;
     };
 
-    wayland.windowManager.sway.config.seat."*" = {
-      xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
-    };
+    #wayland.windowManager.sway.config.seat."*" = {
+    #  xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
+    #};
 
   };
 }
