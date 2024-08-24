@@ -39,6 +39,7 @@ in
     services.gvfs.enable = true;
     users.users.davi.packages = with pkgs;
       [
+        swaynotificationcenter
         swayosd
         swaybg
         texlive.combined.scheme-full
