@@ -10,8 +10,10 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "amd_pstate=active" "zenpower" ];
+  boot.kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=passive" ];
+  boot.blacklistedKernelModules = [ "k10temp" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/c7e40ef1-6b4c-487b-9393-c7c54f35d1f4";
