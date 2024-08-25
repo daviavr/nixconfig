@@ -1,12 +1,8 @@
 {
     "layer": "bottom",
     "position": "top",
-    "margin-top": 2,
-    "margin-left": 2,
-    "margin-right": 2,
-    "margin-bottom": 3,
     "spacing": 12,
-    "height": 38,
+    "height": 42,
     "modules-left": [
         "sway/workspaces"
     ],

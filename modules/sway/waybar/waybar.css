@@ -1,12 +1,14 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-family: DejavuSans, FontAwesome;
+    font-size: 18px;
 }
 
 window#waybar {
     /*background-color: rgba(0, 0, 0, 0);*/
     background-color: @bg1;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 window#waybar.hidden {
@@ -37,6 +39,11 @@ button:hover {
     border-radius: 10px;
     padding: 1px 10px;
     color: @fg1;
+}
+
+#tray
+{
+    padding: 0px 4px 0px 4px
 }
 
 #clock.time{
