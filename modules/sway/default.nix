@@ -40,6 +40,7 @@ in
     services.gvfs.enable = true;
     users.users.davi.packages = with pkgs;
       [
+        playerctl
         swaynotificationcenter
         swayosd
         swaybg
@@ -76,35 +77,45 @@ in
           defaultWorkspace = "workspace number 1";
           startup = [
             { command = "${pkgs.swayosd}/bin/swayosd-server"; }
-            { command = "${pkgs.flatpak}/bin/flatpak com.github.wwmm.easyeffects --gapplication-service"; }
+            { command = "${pkgs.flatpak}/bin/flatpak run com.github.wwmm.easyeffects --gapplication-service"; }
             { command = "${pkgs.ungoogled-chromium}/bin/chromium"; }
-            #{ command = "${pkgs.flatpak}/bin/flatpak run dev.vencord.Vesktop"; }
-            #{ command = "${pkgs.flatpak}/bin/flatpak run md.obsidian.Obsidian"; }
+            { command = "${pkgs.flatpak}/bin/flatpak run dev.vencord.Vesktop"; }
+            { command = "${pkgs.flatpak}/bin/flatpak run com.discordapp.Discord"; }
+            { command = "${pkgs.flatpak}/bin/flatpak run md.obsidian.Obsidian"; }
             { command = "${pkgs.flatpak}/bin/flatpak run com.spotify.Client"; }
           ];
-          bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
-          window = {
-            commands = [
-              { criteria.app_id = ".*"; command = "border pixel 5"; }
-              { criteria.class = ".*"; command = "border pixel 5"; }
-              { criteria.app_id = "dropdown"; command = "border pixel 3; move scratchpad"; }
-              { criteria.app_id = "dropdown"; command = "move absolute position 0 0"; }
-              #{ criteria.app_id = "dropdown"; command = "resize set 100ppt 40ppt"; }
-            ];
-            titlebar = false;
-          };
           floating.criteria = let ins = "^(?i)"; in
             [
               { app_id = ins + "vesktop"; }
               { class = ins + "Spotify"; }
               { app_id = ins + "org.gnome.Nautilus"; }
+              { app_id = ins + "pavucontrol"; }
+              #{ class = ins + "obsidian"; }
+              { class = ins + "discord"; }
             ];
+          bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+          window = {
+            commands = [
+              { criteria.app_id = ".*"; command = "border pixel 8"; }
+              { criteria.class = ".*"; command = "border pixel 8"; }
+              { criteria.app_id = "dropdown"; command = "border pixel 3; move scratchpad"; }
+              #{ criteria.app_id = "dropdown"; command = "move absolute position 0 0"; }
+              #{ criteria.app_id = "dropdown"; command = "resize set 100ppt 40ppt"; }
+            ];
+            titlebar = false;
+          };
           assigns = let ins = "^(?i)"; in
             {
               "1" = [{ class = ins + "Chromium-browser"; }];
+              "2" = [
+                { class = ins + "vscodium"; }
+                { class = ins + "vscode"; }
+              ];
+              "3" = [{ class = ins + "obsidian"; }];
               "4" = [
                 { app_id = ins + "vesktop"; }
                 { class = ins + "Spotify"; }
+                { class = ins + "discord"; }
               ];
             };
           keybindings = mkOptionDefault {
@@ -134,6 +145,9 @@ in
             "XF86AudioMute" = "exec ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle";
             "--release Caps_Lock" = "exec ${pkgs.swayosd}/bin/swayosd-client --caps-lock";
             "${mod}+Shift+m" = "exec ${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle";
+            "--locked XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+            "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+            "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
           };
         };
       };

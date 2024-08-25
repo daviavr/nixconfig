@@ -10,11 +10,11 @@
   config = {
     modules = {
       workstation.enable = true;
+      #tlp.enable = true;
       #gnome.enable = true;
       sway.enable = true;
       firefox.enable = true;
       kanata.enable = true;
-      #tlp.enable = true;
       docker.enable = true;
       pipewire.enable = true;
       flatpak.enable = true;

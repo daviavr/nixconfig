@@ -12,12 +12,13 @@ in
         color-scheme = "prefer-dark";
       };
     };
+    #home.file.".config/gtk-4.0/gtk-dark.css".text = "@import url(\"${pkgs.gnome.gnome-themes-extra}/share/themes/Adwaita-dark/gtk-4.0/gtk.css\");";
     gtk = {
       enable = true;
-      theme = {
-        name = "Adwaita-dark";
-        package = pkgs.gnome.gnome-themes-extra;
-      };
+      #theme = {
+      #  name = "Adwaita-dark";
+      #  package = pkgs.gnome.gnome-themes-extra;
+      #};
       gtk3 = {
         extraConfig.gtk-application-prefer-dark-theme = true;
       };
