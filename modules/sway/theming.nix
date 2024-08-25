@@ -7,11 +7,11 @@ in
 {
   #environment.sessionVariables = lib.mkDefault config.home-manager.users.davi.home.sessionVariables;
   home-manager.users.davi = {
-    #dconf.settings = {
-    #  "org/gnome/desktop/interface" = {
-    #    color-scheme = "prefer-dark";
-    #  };
-    #};
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
     #home.file.".config/gtk-4.0/gtk-dark.css".text = "@import url(\"${pkgs.gnome.gnome-themes-extra}/share/themes/Adwaita-dark/gtk-4.0/gtk.css\");";
     gtk = {
       enable = true;
