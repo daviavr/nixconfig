@@ -6,13 +6,13 @@ let
   cfg = config.modules.sway;
 in
 {
-  imports = [ ./authentication.nix ./theming.nix ./wofi ./waybar ];
+  imports = [ ./authentication.nix ./greeter.nix ./theming.nix ./wofi ./waybar ];
 
   options.modules.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
     services.xserver.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
+    #services.xserver.displayManager.gdm.enable = true;
     networking.networkmanager.enable = true;
 
     xdg.portal = {
