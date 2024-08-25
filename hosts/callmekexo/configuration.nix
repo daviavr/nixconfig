@@ -26,7 +26,6 @@
     };
 
     home-manager.users.davi.home.packages = with pkgs; [
-      tor-browser
       texlive.combined.scheme-full
       gparted
     ];
