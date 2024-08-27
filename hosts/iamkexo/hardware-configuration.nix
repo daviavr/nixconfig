@@ -16,7 +16,7 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/c7e40ef1-6b4c-487b-9393-c7c54f35d1f4";
+    { device = "/dev/disk/by-uuid/4b2fa2a9-3759-4be5-a8d6-0817f6e901a6";
       fsType = "ext4";
     };
 

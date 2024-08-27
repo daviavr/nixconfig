@@ -24,6 +24,9 @@ in
     services.gvfs.enable = true;
     users.users.davi.packages = with pkgs;
       [
+        gammastep
+        gnome.adwaita-icon-theme
+        gnome-themes-extra
         playerctl
         swaynotificationcenter
         swayosd
@@ -61,6 +64,7 @@ in
           defaultWorkspace = "workspace number 1";
           startup = [
             { command = "${pkgs.swayosd}/bin/swayosd-server"; }
+            { command = "${pkgs.gammastep}/bin/gammastep -l -22.5:-47.4 -b 1:0.8"; }
             { command = "${pkgs.flatpak}/bin/flatpak run com.github.wwmm.easyeffects --gapplication-service"; }
             { command = "${pkgs.ungoogled-chromium}/bin/chromium"; }
             { command = "${pkgs.flatpak}/bin/flatpak run dev.vencord.Vesktop"; }
