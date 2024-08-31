@@ -10,7 +10,7 @@
   config = {
     modules = {
       workstation.enable = true;
-      greetd.enable = true;
+      #greetd.enable = true;
       leftwm.enable = true;
       #tlp.enable = true;
       #gnome.enable = true;
@@ -41,15 +41,15 @@
       config.common.default = [
             "wlr"
             "gtk"
+            "gnome"
           ];
       wlr.enable = true;
-      xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
     };
 
     services.gvfs.enable = true;
-
     environment.systemPackages = with pkgs; [
+      xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk
     ];
 
     home-manager.users.davi.home.packages = with pkgs; [

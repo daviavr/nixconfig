@@ -9,7 +9,14 @@ with lib;
 {
   options.modules.gtkTheming.enable = mkEnableOption "prefer dark theme on gtk apps";
   config = mkIf cfg.enable {
+    programs.dconf.enable = true;
+
     home-manager.users.davi = {
+      dconf.settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
+      };
       gtk = {
         enable = true;
         gtk3 = {
