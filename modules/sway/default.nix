@@ -48,7 +48,7 @@ in
             xkb_layout = "br";
           };
           output."*" = {
-            scale = "1";
+            scale = "1.25";
             mode = "3440x1440@144Hz";
           };
           defaultWorkspace = "workspace number 1";
@@ -64,12 +64,12 @@ in
           ];
           floating.criteria = let ins = "^(?i)"; in
             [
-              { app_id = ins + "vesktop"; }
-              { class = ins + "Spotify"; }
+              #{ app_id = ins + "vesktop"; }
+              #{ class = ins + "Spotify"; }
               { app_id = ins + "org.gnome.Nautilus"; }
               { app_id = ins + "pavucontrol"; }
               #{ class = ins + "obsidian"; }
-              { class = ins + "discord"; }
+              #{ class = ins + "discord"; }
             ];
           bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
           window = {

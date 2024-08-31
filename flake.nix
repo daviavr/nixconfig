@@ -14,10 +14,11 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
+      inherit (self) outputs;
       mkSystem = system: hostname:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/${hostname}/configuration.nix
             { networking.hostName = hostname; }
@@ -38,7 +39,8 @@
           ];
         };
     in
-    {
+    rec {
+      packages = import ./pkgs nixpkgs.legacyPackages.x86_64-linux;
       nixosConfigurations = {
         iamkexo = mkSystem "x86_64-linux" "iamkexo";
         callmekexo = mkSystem "x86_64-linux" "callmekexo";

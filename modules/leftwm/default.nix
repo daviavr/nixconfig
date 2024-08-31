@@ -5,23 +5,25 @@ let
 in
 {
   options.modules.leftwm.enable = mkEnableOption "leftwm";
+
   config = {
-        services = {
+    services = {
       xserver = {
-     enable = true;
-     displayManager = { gdm.enable = true;
-      startx.enable = true;};
-      windowManager.leftwm.enable = true;
-      desktopManager = {
-      xterm.enable = false;
-    };
-    };
-    displayManager = {
+        enable = true;
+        displayManager = {
+          gdm.enable = true;
+          startx.enable = true;
+        };
+        windowManager.leftwm.enable = true;
+        desktopManager = {
+          xterm.enable = false;
+        };
+      };
+      displayManager = {
         defaultSession = "none+leftwm";
-    };
+      };
     };
 
-    
     services.xserver.dpi = 120;
 
     home-manager.users.davi = {

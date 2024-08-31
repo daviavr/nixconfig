@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, home-manager, ... }:
+{ config, pkgs, inputs, outputs, home-manager, ... }:
 
 {
   imports =
@@ -47,10 +47,14 @@
       extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
     };
 
+    
+
     services.gvfs.enable = true;
     environment.systemPackages = with pkgs; [
       xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk
     ];
+
+    fonts.packages = with pkgs; [ outputs.packages.feather-font ];
 
     home-manager.users.davi.home.packages = with pkgs; [
       tor-browser
