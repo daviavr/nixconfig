@@ -18,7 +18,7 @@
     ./neovim
     ./direnv
     ./vscode
-    #./sway
+    ./sway
     ./leftwm
     ./greetd
     ./standaloneSecurity

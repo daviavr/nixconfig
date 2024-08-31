@@ -3,7 +3,7 @@ with lib;
 let cfg = config.modules.waybar;
 in
 {
-  options.modules.waybar = mkEnableOption "waybar";
+  options.modules.waybar.enable = mkEnableOption "waybar";
   config = mkIf cfg.enable {
     home-manager.users.davi = {
       programs.waybar = {

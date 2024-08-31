@@ -10,8 +10,8 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --xsessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions --time --cmd ${pkgs.leftwm}/bin/leftwm --remember --remember-user-session";
-          user = "davi";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --time";
+          user = "greeter";
         };
       };
     };

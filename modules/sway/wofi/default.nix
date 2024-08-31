@@ -3,7 +3,7 @@ with lib;
 let cfg = config.modules.wofi;
 in
 {
-  options.modules.wofi = mkEnableOption "wofi";
+  options.modules.wofi.enable = mkEnableOption "wofi";
   config = mkIf cfg.enable {
     home-manager.users.davi = {
       programs.wofi = {
