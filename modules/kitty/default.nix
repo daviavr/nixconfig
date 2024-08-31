@@ -17,7 +17,7 @@ in
         '';
         font = {
           name = "DejaVuSansMono";
-          size = 18;
+          size = 16;
         };
         theme = "Gruvbox Dark";
       };

@@ -6,22 +6,12 @@ let
   cfg = config.modules.sway;
 in
 {
-  imports = [ ./authentication.nix ./greeter.nix ./theming.nix ./wofi ./waybar ];
+  imports = [ ./wofi ./waybar ];
 
   options.modules.sway.enable = mkEnableOption "sway";
 
   config = mkIf cfg.enable {
-    services.xserver.enable = true;
-    #services.xserver.displayManager.gdm.enable = true;
-    networking.networkmanager.enable = true;
-
-    xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-    };
-
-    services.gvfs.enable = true;
+    modules = { wofi.enable = true; waybar.enable = true; };
     users.users.davi.packages = with pkgs;
       [
         gammastep
