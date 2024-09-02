@@ -17,6 +17,12 @@ with lib;
           color-scheme = "prefer-dark";
         };
       };
+
+      qt = {
+        enable = true;
+        style.name = "adwaita-dark";
+      };
+
       gtk = {
         enable = true;
         gtk3 = {
@@ -24,6 +30,11 @@ with lib;
         };
         gtk4 = {
           extraConfig.gtk-application-prefer-dark-theme = true;
+        };
+        cursorTheme = {
+          name = cursorTheme;
+          package = cursorPackage;
+          size = cursorSize;
         };
       };
 
