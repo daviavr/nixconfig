@@ -3,3 +3,7 @@ xrdb ~/.Xresources
 flatpak run com.github.wwmm.easyeffects --gapplication-service &
 systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service
 pgrep redshift || redshift -l -22.5:-47.4 -t 6500:4000 &
+
+pgrep zen || flatpak run io.github.zen_browser.zen &
+pgrep vesktop || flatpak run dev.vencord.Vesktop &
+pgrep obsidian || flatpak run md.obsidian.Obsidian &

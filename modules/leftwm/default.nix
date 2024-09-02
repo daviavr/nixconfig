@@ -42,12 +42,12 @@ in
       home.file = {
         ".config/leftwm/config.ron" = {
           enable = true;
-          source = ./leftwm/config.ron;
+          source = ./config.ron;
         };
         ".config/leftwm/up" = {
           enable = true;
           executable = true;
-          source = ./leftwm/up;
+          source = ./up;
         };
         "catppuccin" = {
           enable = true;

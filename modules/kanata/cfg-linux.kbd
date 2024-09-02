@@ -106,20 +106,14 @@
   pseudo.sft nop1
 )
 
-(deflayermap (changelayouts)
-  ___ (on-press toggle-vkey pseudo.sft)
-  caps caps
-)
-
 (defalias
-  on.caps (one-shot 500 (layer-toggle changelayouts))
-  p.caps (multi f24 (tap-hold-release $pinky.tt $ht @on.caps (layer-toggle caps-overrides)))
+  rctl (tap-dance 300 (rctl (on-press toggle-vkey pseudo.sft)))
 )
 
 (deflayer programmer
   @esc    @plus     @sbracl    @bracl    @prthl    @equal   @and     @prthr    @bracr    @sbracr    @aster    @excl    @at   bspc
   _  _     _    _    _    _    _    _    _    _    _    grv    @dollar  _ 
-  @p.caps _     _    _    _    _    _    _    _    _    ;    @fslash    @hash
+  @caps _     _    _    _    _    _    _    _    _    ;    @fslash    @hash
   _ _     _    _    _    _    _    _    _    -    @dot    @comma  _  _ 
-  _ _ _           _                @ralt _  _
+  _ _ _           _                @ralt _  @rctl
 )

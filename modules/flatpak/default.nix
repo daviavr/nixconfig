@@ -14,7 +14,8 @@ in
       services.flatpak = {
         enable = true;
         packages = [
-          "io.dbeaver.DBeaverCommunity"
+          "io.beekeeperstudio.Studio"
+          "io.github.zen_browser.zen"
           "in.cinny.Cinny"
           "org.signal.Signal"
           "md.obsidian.Obsidian"
