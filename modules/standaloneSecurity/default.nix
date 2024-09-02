@@ -9,7 +9,7 @@ in
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryPackage = pkgs.pinentry-gnome3;
+      pinentryPackage = pkgs.pinentry-curses;
     };
     programs.seahorse.enable = true;
 
