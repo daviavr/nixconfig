@@ -65,6 +65,8 @@ in
       options = "--delete-older-than 15d";
     };
 
+    services.gvfs.enable = true;
+
     environment.systemPackages = with pkgs; [
       ungoogled-chromium
       unzip

@@ -1,4 +1,4 @@
-{ pkgs, lib, home-manager, ... }:
+{ pkgs, lib, home-manager, config, ... }:
 with lib;
 let
   cfg = config.modules.leftwm;
@@ -6,7 +6,17 @@ in
 {
   options.modules.leftwm.enable = mkEnableOption "leftwm";
 
-  config = {
+  config = mkIf cfg.enable {
+
+    xdg.portal = {
+      enable = true;
+      config.common.default = [
+        "gtk"
+      ];
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+    };
+
     services = {
       xserver = {
         enable = true;
@@ -28,7 +38,28 @@ in
 
     home-manager.users.davi = {
       services.dunst.enable = true;
+
+      home.file = {
+        ".config/leftwm/config.ron" = {
+          enable = true;
+          source = ./leftwm/config.ron;
+        };
+        ".config/leftwm/up" = {
+          enable = true;
+          executable = true;
+          source = ./leftwm/up;
+        };
+        "catppuccin" = {
+          enable = true;
+          source = ./themes/catppuccin;
+          target = ".config/leftwm/themes/current";
+        };
+      };
+
       home.packages = with pkgs; [
+        redshift
+        playerctl
+        sxhkd
         leftwm
         picom
         dmenu

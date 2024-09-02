@@ -12,6 +12,19 @@ in
 
   config = mkIf cfg.enable {
     modules = { wofi.enable = true; waybar.enable = true; };
+
+    xdg.portal = {
+      enable = true;
+      config.sway.default = [
+        "wlr"
+        "gtk"
+        #"gnome"
+      ];
+      wlr.enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+    };
+
     users.users.davi.packages = with pkgs;
       [
         gammastep
@@ -21,7 +34,6 @@ in
         swaynotificationcenter
         swayosd
         swaybg
-        texlive.combined.scheme-full
         gnome.nautilus
         gnome-text-editor
         networkmanagerapplet

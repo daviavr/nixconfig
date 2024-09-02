@@ -1,0 +1,40 @@
+;; ┌────────────────────────────────────────────────────────────┐
+;; │░█▀█░█▀█░█░░░█░█░█▀▄░█▀█░█▀▄░░░░░░░░░█▀▀░█▀█░█░░░█▀█░█▀▄░█▀▀│
+;; │░█▀▀░█░█░█░░░░█░░█▀▄░█▀█░█▀▄░░░░▀░░░░█░░░█░█░█░░░█░█░█▀▄░▀▀█│
+;; │░▀░░░▀▀▀░▀▀▀░░▀░░▀▀░░▀░▀░▀░▀░░░░▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀│
+;; └────────────────────────────────────────────────────────────┘
+
+
+[color]
+;; Main colors
+background = #282828
+foreground = #D8A657
+;;foreground-alt = #9C9C9C
+primary = #458588
+secondary = #689D6A
+alternate = #D3869B
+
+trans = #00000000
+white = #FFFFFF
+black = #000000
+
+;; Material Colors
+red = #ea6962
+pink = #d81b60
+purple = #d3869b
+deep-purple = #5e35b1
+indigo = #3949ab
+blue = #2e3b3b
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #a9b665
+light-green = #7cb342
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
+deep-orange = #f4511e
+brown = #6d4c41
+grey = #757575
+blue-gray = #546e7a

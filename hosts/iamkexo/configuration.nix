@@ -34,34 +34,27 @@
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boo
 
-    services.xserver.enable = true;
+    hardware.i2c.enable = true;
+   #boot.kernelModules = [ "i2c-dev" ];
+   #services.udev.extraRules = ''
+   #  KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+   #'';
 
-    xdg.portal = {
-      enable = true;
-      config.common.default = [
-            "wlr"
-            "gtk"
-            "gnome"
-          ];
-      wlr.enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
-    };
-
-    
-
-    services.gvfs.enable = true;
     environment.systemPackages = with pkgs; [
-      xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk
     ];
 
     fonts.packages = with pkgs; [ outputs.packages.feather-font ];
 
     home-manager.users.davi.home.packages = with pkgs; [
-      tor-browser
+      ddcutil
+      gtk4
+      gtk3
+      gnome.nautilus
       texlive.combined.scheme-full
       gparted
       pavucontrol
       android-studio
+      alsa-utils
     ];
   };
 }

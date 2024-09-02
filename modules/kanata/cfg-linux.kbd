@@ -60,13 +60,16 @@
   esc (fork esc RS-grv (lsft))
 )
 
+
 (deftemplate ow.keys (original-action new-action real-key)
   (switch 
-    ((and (or lsft nop1) (input-history real $real-key 1))) (multi (unshift $real-key) $new-action) break 
+    ((and nop1 (input-history real $real-key 1))) $new-action break
+    ((and lsft (input-history real $real-key 1))) (multi (unshift $real-key) $new-action) break 
     (lsft) $new-action break
     () $original-action break
   )
 )
+
 
 (defalias
   plus  (t! ow.keys + 1 1)
