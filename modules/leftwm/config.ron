@@ -77,7 +77,7 @@
     focus_behaviour: ClickTo,
     focus_new_windows: true,
     single_window_border: true,
-    sloppy_mouse_follows_focus: true,
+    sloppy_mouse_follows_focus: false,
     create_follows_cursor: None,
     auto_derive_workspaces: true,
     disable_cursor_reposition_on_resize: true,
