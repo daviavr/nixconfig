@@ -21,6 +21,8 @@ in
             globalAnnounceEnabled = false;
             localAnnounceEnabled = true;
             crashReportingEnabled = false;
+            urAccepted = -1;
+            relaysEnabled = false;
           };
         devices."pixel8" = {
           id = "HGQADWC-2DVKWLG-SLYAV5J-BP5HG7J-3VZGZVD-BVXOUJI-IJSOVIZ-BJDYCQ5";
