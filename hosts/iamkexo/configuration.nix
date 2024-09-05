@@ -12,6 +12,7 @@
       workstation.enable = true;
       #greetd.enable = true;
       leftwm.enable = true;
+      syncthing.enable = true;
       #tlp.enable = true;
       #gnome.enable = true;
       #sway.enable = true;
@@ -53,7 +54,6 @@
       texlive.combined.scheme-full
       gparted
       pavucontrol
-      android-studio
       alsa-utils
     ];
   };

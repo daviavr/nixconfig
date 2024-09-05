@@ -32,7 +32,7 @@
 )
 
 (defvar
- ht 150
+ ht 200
  td 100
  pinky.tt 140
  index.tt 90
