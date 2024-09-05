@@ -36,10 +36,12 @@
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boo
 
     hardware.i2c.enable = true;
-   #boot.kernelModules = [ "i2c-dev" ];
-   #services.udev.extraRules = ''
-   #  KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
-   #'';
+    services.printing.enable = true;
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
 
     environment.systemPackages = with pkgs; [
     ];
