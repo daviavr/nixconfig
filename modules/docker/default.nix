@@ -10,7 +10,7 @@ in
         enable = true;
         setSocketVariable = true;
       };
-      daemon.settings = let HOME = builtins.getEnv "HOME"; in { data-root = "${HOME}.docker/data"; };
+      daemon.settings = let HOME = builtins.getEnv "HOME"; in { data-root = "${HOME}/.docker/data"; };
     };
     environment.systemPackages = with pkgs; [
       docker-compose

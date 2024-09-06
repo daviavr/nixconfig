@@ -33,7 +33,7 @@
 
     networking.networkmanager.enable = true;
     hardware.bluetooth.enable = true; # enables support for Bluetooth
-    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boo
+    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
     hardware.i2c.enable = true;
     services.printing.enable = true;
@@ -50,8 +50,6 @@
 
     home-manager.users.davi.home.packages = with pkgs; [
       ddcutil
-      gtk4
-      gtk3
       gnome.nautilus
       texlive.combined.scheme-full
       gparted

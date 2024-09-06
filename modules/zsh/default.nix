@@ -17,7 +17,8 @@ in
         initExtra = "PATH=\$PATH:/home/davi/.cargo/bin";
 
         shellAliases = {
-          update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig";
+          update = "doas nixos-rebuild switch --flake /home/davi/nixconfig";
+          sudo = "doas";
         };
 
         oh-my-zsh = {

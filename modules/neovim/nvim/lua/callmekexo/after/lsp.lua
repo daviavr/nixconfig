@@ -55,9 +55,7 @@ require('mason-lspconfig').setup({
   },
 })
 
--- These are just examples. Replace them with the language
--- servers you have installed in your system
-require('lspconfig').tsserver.setup({})
+require('lspconfig').ts_ls.setup({})
 
 require('lspconfig').rust_analyzer.setup({})
 

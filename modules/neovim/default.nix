@@ -6,7 +6,7 @@ in
 {
   options = { modules.neovim.enable = mkEnableOption "neovim"; };
   config = mkIf cfg.enable {
-    home-manager.users.davi = {
+    home-manager.users.davi = { lib, ... }: {
       programs.neovim = {
         enable = true;
         vimAlias = true;
@@ -15,14 +15,13 @@ in
       };
       home.packages = with pkgs; [
         wl-clipboard
-        lua51Packages.lua
-        lua51Packages.luarocks
+        luajit
+        luajitPackages.luarocks
         nixpkgs-fmt
       ];
-      home.file."nvim" = {
-        enable = true;
-        source = ./nvim;
-        target = ".config/nvim";
+      home.activation = {
+        removeNvimCfg = lib.hm.dag.entryAfter [ "writeBoundary" ] "run --quiet rm -rf $HOME/.config/nvim";
+        copyNvimCfg = lib.hm.dag.entryAfter [ "removeNvimCfg" ] "run --quiet ln -s $HOME/nixconfig/modules/neovim/nvim $HOME/.config/nvim";
       };
     };
   };

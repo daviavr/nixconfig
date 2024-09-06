@@ -54,6 +54,10 @@ with lib;
         xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
       };
 
+      home.packages = with pkgs; [
+        gtk4
+        gtk3
+      ];
     };
   };
 }
