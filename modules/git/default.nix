@@ -18,7 +18,7 @@ in
 # https://github.com/NixOS/nix/issues/6443
 # https://discourse.nixos.org/t/nixos-rebuild-switch-fails-under-flakes-and-doas-with-git-warning-about-dubious-ownership/46069/7
         safe = {
-          directory = [ "$HOME/nixconfig" ];
+          directory = [ "$HOME/nixconfig/.git" ];
         };
       };
 
