@@ -56,7 +56,7 @@ in
 
         DEVICES_TO_ENABLE_ON_AC = "nfc wwan";
         DEVICES_TO_DISABLE_ON_BAT = "nfc wwan";
-        DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth nfc wifi wwan";
+        DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth nfc wwan";
 
         USB_DENYLIST = "0001:0001 04f3:3140 04f3:04f3 1d6b:0002";
 
