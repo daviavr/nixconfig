@@ -19,6 +19,7 @@ in
         shellAliases = {
           update = "doas nixos-rebuild switch --flake /home/davi/nixconfig";
           sudo = "doas";
+          ptg = "polybar-msg cmd toggle";
         };
 
         oh-my-zsh = {

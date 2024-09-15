@@ -334,7 +334,7 @@ label-foreground = ${colors.foreground}
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = $HOME/.config/leftwm/themes/current/scripts/pulseaudio-control.sh --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-0d8c_Generic_USB_Audio_Device-00.analog-stereo: Headphones" --sink-nickname "alsa_output.pci-0000_0a_00.1.hdmi-stereo-extra4: Monitor" listen
+exec = $HOME/.config/leftwm/themes/current/scripts/pulseaudio-control.sh --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-0d8c_Generic_USB_Audio_Device-00.analog-stereo: Headphones" --sink-nickname "alsa_output.pci-0000_0a_00.1.hdmi-stereo-extra4: Monitor" --sink-nickname "alsa_output.pci-0000_0a_00.1.hdmi-stereo-extra3: Monitor" listen
 click-right = exec pavucontrol &
 click-left = $HOME/.config/leftwm/themes/current/scripts/pulseaudio-control.sh togmute
 click-middle = $HOME/.config/leftwm/themes/current/scripts/pulseaudio-control.sh --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink

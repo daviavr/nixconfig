@@ -49,6 +49,7 @@
     fonts.packages = with pkgs; [ outputs.packages.feather-font ];
 
     home-manager.users.davi.home.packages = with pkgs; [
+      evince
       ddcutil
       gnome.nautilus
       texlive.combined.scheme-full

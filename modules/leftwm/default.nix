@@ -57,16 +57,15 @@ in
       };
 
       home.packages = with pkgs; [
+        i3lock
         redshift
         playerctl
-        sxhkd
         leftwm
         picom
         dmenu
         feh
         rofi
         polybar
-        numlockx
         blueberry
       ];
     };
