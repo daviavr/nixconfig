@@ -23,6 +23,7 @@
       direnv.enable = true;
       vscode.enable = true;
       neovim.enable = true;
+      syncthing.enable = true;
     };
 
     home-manager.users.davi.home.packages = with pkgs; [
