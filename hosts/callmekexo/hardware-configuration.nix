@@ -12,8 +12,10 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "rtsx_pci_sdmmc" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    kernelModules = [ "kvm-intel" (lib.mkIf config.services.tlp.enable "acpi_call") ];
+    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+  };
 
   fileSystems."/" =
     {
@@ -47,7 +49,7 @@
   hardware.sensor.iio.enable = true;
 
   #Set the default driver to be intel-media-driver
-  #environment.variables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.variables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
