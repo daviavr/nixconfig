@@ -37,6 +37,7 @@ in
       ]) ++ (with pkgs; [
         pop-launcher
         gnome.dconf-editor
+        gnome-tweaks
       ]);
       home.file."config.json" = {
           enable = true;
