@@ -38,7 +38,7 @@ with lib;
         };
       };
 
-      xresources.properties = { "*dpi" = "120"; "Xft.dpi" = 120; };
+      #xresources.properties = { "*dpi" = "120"; "Xft.dpi" = 120; };
       home.pointerCursor = {
         name = cursorTheme;
         package = cursorPackage;
@@ -50,9 +50,9 @@ with lib;
         gtk.enable = true;
       };
 
-      wayland.windowManager.sway.config.seat."*" = {
-        xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
-      };
+      #wayland.windowManager.sway.config.seat."*" = {
+      #  xcursor_theme = "${cursorTheme} ${builtins.toString cursorSize}";
+      #};
 
       home.packages = with pkgs; [
         gtk4

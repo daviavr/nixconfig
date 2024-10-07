@@ -10,15 +10,15 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --time";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --time -c ${pkgs.sway}/bin/sway";
           user = "greeter";
         };
       };
     };
 
     environment.etc."greetd/environments".text = ''
-      leftwm
       sway
+      leftwm
       river
       zsh
       bash

@@ -11,10 +11,10 @@
     modules = {
       workstation.enable = true;
       #greetd.enable = true;
-      leftwm.enable = true;
+      #leftwm.enable = true;
       syncthing.enable = true;
       #tlp.enable = true;
-      #gnome.enable = true;
+      gnome.enable = true;
       #sway.enable = true;
       firefox.enable = true;
       kanata.enable = true;
@@ -28,7 +28,7 @@
       vscode.enable = true;
       neovim.enable = true;
       gtkTheming.enable = true;
-      standaloneSecurity.enable = true;
+      #standaloneSecurity.enable = true;
     };
 
     networking.networkmanager.enable = true;
@@ -43,6 +43,17 @@
       openFirewall = true;
     };
 
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+
+    environment.shellInit = ''
+      export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
+    '';
+
+    programs.seahorse.enable = true;
+
     environment.systemPackages = with pkgs; [
     ];
 
@@ -56,6 +67,7 @@
       gparted
       pavucontrol
       alsa-utils
+      gnome-text-editor
     ];
   };
 }

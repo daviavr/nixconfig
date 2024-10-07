@@ -79,3 +79,12 @@ require("lspconfig").dartls.setup({
         })
 
 require('lspconfig').rnix.setup({ })
+
+require('lazy').setup {
+    {
+        'barrett-ruth/live-server.nvim',
+        build = 'pnpm add -g live-server',
+        cmd = { 'LiveServerStart', 'LiveServerStop' },
+        config = true
+    }
+}

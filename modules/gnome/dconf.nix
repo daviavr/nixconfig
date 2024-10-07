@@ -1,4 +1,10 @@
-homeLib: with homeLib; {
+homeLib: with homeLib;
+let
+  scaling = "['scale-monitor-framebuffer']";
+in
+{
+  "org/gnome/mutter".experimental-features = scaling;
+
   "org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
     show-battery-percentage = true;
@@ -137,3 +143,4 @@ homeLib: with homeLib; {
     window-size = mkTuple [ 1231 902 ];
   };
 }
+
