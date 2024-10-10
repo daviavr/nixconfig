@@ -55,7 +55,7 @@ in
 
   "org/gnome/shell" = {
     disabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "another-window-session-manager@gmail.com" "ddterm@amezin.github.com" ];
-    enabled-extensions = [ "pop-shell@system76.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "grand-theft-focus@zalckos.github.com" "no-overview@fthx" "caffeine@patapon.info" "appindicatorsupport@rgcjonas.gmail.com" ];
+    enabled-extensions = [ "pop-shell@system76.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "grand-theft-focus@zalckos.github.com" "no-overview@fthx" "caffeine@patapon.info" "appindicatorsupport@rgcjonas.gmail.com" "display-brightness-ddcutil@themightydeity.github.com"];
     favorite-apps = [ "org.gnome.Nautilus.desktop" "firefox.desktop" ];
     last-selected-power-profile = "performance";
     welcome-dialog-last-shown-version = "46.2";
