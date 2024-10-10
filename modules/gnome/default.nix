@@ -16,7 +16,6 @@ in
       gnome-connections
     ]) ++ (with pkgs.gnome; [
       gnome-contacts
-      evince # document viewer
       epiphany
     ]);
 
