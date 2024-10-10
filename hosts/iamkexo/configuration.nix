@@ -60,6 +60,7 @@
     fonts.packages = with pkgs; [ outputs.packages.feather-font ];
 
     home-manager.users.davi.home.packages = with pkgs; [
+      gnomeExtensions.brightness-control-using-ddcutil
       evince
       ddcutil
       gnome.nautilus
