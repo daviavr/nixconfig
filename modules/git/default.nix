@@ -14,7 +14,7 @@ in
 
         saferepo = {
           branch = "main";
-          dir = "$HOME/nixconfig/.git";
+          dir = "/home/davi/nixconfig/.git";
         };
       in
       {
