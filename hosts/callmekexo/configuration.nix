@@ -29,6 +29,7 @@
     home-manager.users.davi.home.packages = with pkgs; [
       texlive.combined.scheme-full
       gparted
+      pavucontrol
     ];
   };
 }
