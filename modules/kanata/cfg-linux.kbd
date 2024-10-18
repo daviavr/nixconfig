@@ -39,6 +39,7 @@
 )
 
 (defalias
+  onlycaps (multi f24 (layer-toggle caps-overrides))
   caps (multi f24 (tap-hold-press $pinky.tt $ht caps (layer-toggle caps-overrides)))
 )
 
@@ -113,7 +114,7 @@
 (deflayer programmer
   @esc    @plus     @sbracl    @bracl    @prthl    @equal   @and     @prthr    @bracr    @sbracr    @aster    @excl    @at   bspc
   _  _     _    _    _    _    _    _    _    _    _    grv    @dollar  _ 
-  @caps _     _    _    _    _    _    _    _    _    ;    @fslash    @hash
+  @onlycaps _     _    _    _    _    _    _    _    _    ;    @fslash    @hash
   _ _     _    _    _    _    _    _    _    -    @dot    @comma  _  _ 
   _ _ _           _                @ralt _  @rctl
 )
