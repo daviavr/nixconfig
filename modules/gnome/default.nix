@@ -14,7 +14,6 @@ in
     environment.gnome.excludePackages = (with pkgs; [
       gnome-tour
       gnome-connections
-    ]) ++ (with pkgs.gnome; [
       gnome-contacts
       epiphany
     ]);
@@ -35,7 +34,7 @@ in
         caffeine
       ]) ++ (with pkgs; [
         pop-launcher
-        gnome.dconf-editor
+        dconf-editor
         gnome-tweaks
       ]);
       home.file."config.json" = {

@@ -10,6 +10,9 @@
     };
 
     flatpaks.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixos-cosmic.inputs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -22,6 +25,13 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             { networking.hostName = hostname; }
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {

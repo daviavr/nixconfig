@@ -5,30 +5,53 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" "amd_pstate=active" "zenpower" ];
   boot.kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=passive" ];
   boot.blacklistedKernelModules = [ "k10temp" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs;[ rocmPackages.clr.icd ];
+  };
+
+  systemd.tmpfiles.rules =
+    let
+      rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+          rocblas
+          hipblas
+          clr
+        ];
+      };
+    in
+    [
+      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+    ];
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4b2fa2a9-3759-4be5-a8d6-0817f6e901a6";
+    {
+      device = "/dev/disk/by-uuid/4b2fa2a9-3759-4be5-a8d6-0817f6e901a6";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B4B8-B119";
+    {
+      device = "/dev/disk/by-uuid/B4B8-B119";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/3b54dcd2-1436-4cf0-9aab-b7ec1117d588"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/3b54dcd2-1436-4cf0-9aab-b7ec1117d588"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

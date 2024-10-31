@@ -14,7 +14,7 @@
       #leftwm.enable = true;
       syncthing.enable = true;
       #tlp.enable = true;
-      gnome.enable = true;
+      #gnome.enable = true;
       #sway.enable = true;
       firefox.enable = true;
       kanata.enable = true;
@@ -30,6 +30,9 @@
       gtkTheming.enable = true;
       #standaloneSecurity.enable = true;
     };
+    
+    services.desktopManager.cosmic.enable = true;
+    ervices.displayManager.cosmic-greeter.enable = true;
 
     networking.networkmanager.enable = true;
     hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -55,6 +58,7 @@
     programs.seahorse.enable = true;
 
     environment.systemPackages = with pkgs; [
+      clinfo
     ];
 
     fonts.packages = with pkgs; [ outputs.packages.feather-font ];
@@ -63,7 +67,6 @@
       gnomeExtensions.brightness-control-using-ddcutil
       evince
       ddcutil
-      gnome.nautilus
       texlive.combined.scheme-full
       gparted
       pavucontrol
