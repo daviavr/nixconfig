@@ -15,6 +15,7 @@
       syncthing.enable = true;
       #tlp.enable = true;
       #gnome.enable = true;
+      cosmic.enable = true;
       #sway.enable = true;
       firefox.enable = true;
       kanata.enable = true;
@@ -30,9 +31,6 @@
       gtkTheming.enable = true;
       #standaloneSecurity.enable = true;
     };
-    
-    services.desktopManager.cosmic.enable = true;
-    ervices.displayManager.cosmic-greeter.enable = true;
 
     networking.networkmanager.enable = true;
     hardware.bluetooth.enable = true; # enables support for Bluetooth

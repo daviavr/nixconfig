@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,10 +13,9 @@
     flatpaks.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixos-cosmic.inputs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-cosmic, ... }@inputs:
     let
       inherit (self) outputs;
       mkSystem = system: hostname:

@@ -95,6 +95,10 @@ in
       )
     ];
 
+    environment.sessionVariables = rec {
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    };
+
     fonts.packages = with pkgs; [ nerdfonts ];
 
     system.stateVersion = "24.05"; # Did you read the comment?

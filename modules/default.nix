@@ -23,5 +23,6 @@
     ./greetd
     ./standaloneSecurity
     ./gtkTheming
+    ./cosmic
   ];
 }
