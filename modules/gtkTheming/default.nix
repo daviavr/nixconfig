@@ -11,6 +11,27 @@ with lib;
   config = mkIf cfg.enable {
     programs.dconf.enable = true;
 
+    system.fsPackages = [ pkgs.bindfs ];
+    fileSystems =
+      let
+        mkRoSymBind = path: {
+          device = path;
+          fsType = "fuse.bindfs";
+          options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+        };
+        aggregated = pkgs.buildEnv {
+          name = "system-fonts-and-icons";
+          paths = with pkgs;[
+            cursorPackage
+          ];
+          pathsToLink = [ "/share/icons" ];
+        };
+      in
+      {
+        # Create an FHS mount to support flatpak host icons/fonts
+        "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
+      };
+
     home-manager.users.davi = {
       dconf.settings = {
         "org/gnome/desktop/interface" = {

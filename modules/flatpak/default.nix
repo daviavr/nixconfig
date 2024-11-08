@@ -9,6 +9,14 @@ in
   config = mkIf cfg.enable {
     services.flatpak.enable = true;
 
+    systemd.user.services.easyeffectsAutorun = {
+      description = "...";
+      script = ''
+        ${pkgs.flatpak}/bin/flatpak run com.github.wwmm.easyeffects --gapplication-service
+      '';
+      wantedBy = [ "multi-user.target" ]; # starts after login
+    };
+
     home-manager.users.davi = { inputs, ... }: with inputs;{
       imports = [ flatpaks.homeManagerModules.nix-flatpak ];
       services.flatpak = {

@@ -14,7 +14,7 @@
       #leftwm.enable = true;
       syncthing.enable = true;
       #tlp.enable = true;
-      #gnome.enable = true;
+      gnome.enable = true;
       cosmic.enable = true;
       #sway.enable = true;
       firefox.enable = true;
@@ -35,6 +35,9 @@
     networking.networkmanager.enable = true;
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+    networking.firewall.allowedTCPPorts = [ 3000 8080 8443];
+    #networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
     hardware.i2c.enable = true;
     services.printing.enable = true;
