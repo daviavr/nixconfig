@@ -19,7 +19,7 @@
     let
       inherit (self) outputs;
       mkSystem = system: hostname:
-        nixpkgs.lib.nixosSystem {
+        nixpkgs.lib.nixosSystem rec {
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [

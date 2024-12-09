@@ -55,7 +55,7 @@ in
 
   "org/gnome/shell" = {
     disabled-extensions = [ "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "another-window-session-manager@gmail.com" "ddterm@amezin.github.com" ];
-    enabled-extensions = [ "pop-shell@system76.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "grand-theft-focus@zalckos.github.com" "no-overview@fthx" "caffeine@patapon.info" "appindicatorsupport@rgcjonas.gmail.com" "display-brightness-ddcutil@themightydeity.github.com"];
+    enabled-extensions = [ "pop-shell@system76.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "grand-theft-focus@zalckos.github.com" "no-overview@fthx" "caffeine@patapon.info" "appindicatorsupport@rgcjonas.gmail.com" "display-brightness-ddcutil@themightydeity.github.com" ];
     favorite-apps = [ "org.gnome.Nautilus.desktop" "firefox.desktop" ];
     last-selected-power-profile = "performance";
     welcome-dialog-last-shown-version = "46.2";
@@ -84,7 +84,7 @@ in
     active-hint-border-radius = mkUint32 2;
     focus-up = [ "<Super>Up" "<Super>KP_Up" "<Super>k" ];
     fullscreen-launcher = false;
-    hint-color-rgba = "rgb(0,97,230)";
+    hint-color-rgba = "rgb(53,132,228)";
     mouse-cursor-follows-active-window = false;
     pop-monitor-down = [ ];
     pop-monitor-left = [ ];
@@ -97,7 +97,19 @@ in
     stacking-with-mouse = false;
     tile-by-default = true;
     tile-enter = [ "<Super>r" ];
+    tile-move-down = [ ];
+    tile-move-down-global = [ "<Super><Shift>Down" "<Super><Shift>KP_Down" "<Super><Shift>j" ];
+    tile-move-left = [ ];
+    tile-move-left-global = [ "<Super><Shift>Left" "<Super><Shift>KP_Left" "<Super><Shift>h" ];
+    tile-move-right = [ ];
+    tile-move-right-global = [ "<Super><Shift>Right" "<Super><Shift>KP_Right" "<Super><Shift>l" ];
+    tile-move-up = [ ];
+    tile-move-up-global = [ "<Super><Shift>Up" "<Super><Shift>KP_Up" "<Super><Shift>k" ];
     tile-orientation = [ "<Super>w" ];
+    tile-resize-down = [ "Down" "KP_Down" "j" ];
+    tile-resize-left = [ "Left" "KP_Left" "h" ];
+    tile-resize-right = [ "Right" "KP_Right" "l" ];
+    tile-resize-up = [ "Up" "KP_Up" "k" ];
     toggle-floating = [ "<Shift><Super>space" ];
     toggle-stacking-global = [ "<Super>s" ];
     toggle-tiling = [ "<Super>z" ];

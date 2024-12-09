@@ -19,7 +19,7 @@ in
           name = "DejaVuSansMono";
           size = 16;
         };
-        theme = "Gruvbox Dark";
+        themeFile = "gruvbox-dark-hard";
       };
       home.packages = with pkgs; [
         wmctrl

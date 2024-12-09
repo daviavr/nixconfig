@@ -1,6 +1,5 @@
 (defcfg
   process-unmapped-keys yes
-  windows-altgr cancel-lctl-press
 )
 
 (deflocalkeys-linux
@@ -32,15 +31,16 @@
 )
 
 (defvar
- ht 200
- td 100
- pinky.tt 140
- index.tt 90
+ ht 100
+ mindinho.tt 65
+ anelar.tt 55
+ medio.tt 56
+ indicador.tt 56
 )
 
 (defalias
   onlycaps (multi f24 (layer-toggle caps-overrides))
-  caps (multi f24 (tap-hold-press $pinky.tt $ht caps (layer-toggle caps-overrides)))
+  caps (multi f24 (tap-hold-press $mindinho.tt $ht caps (layer-toggle caps-overrides)))
 )
 
 (deflayermap (caps-overrides)
@@ -73,30 +73,32 @@
 
 
 (defalias
-  plus  (t! ow.keys + 1 1)
-  sbracl (t! ow.keys [ 2 2)
-  bracl (t! ow.keys RS-[ 3 3)
-  prthl (t! ow.keys RS-9 4 4)
-  equal (t! ow.keys = 5 5)
-  and (t! ow.keys RS-7 6 6)
-  prthr (t! ow.keys RS-0 7 7)
-  bracr (t! ow.keys RS-] 8 8)
-  sbracr (t! ow.keys ] 9 9)
-  aster (t! ow.keys RS-8 0 0)
   caret (macro RS-~ spc)
-  excl (t! ow.keys RS-1 @caret nop0)
-  at (t! ow.keys RS-2 RS-2 nop0)
+  cir (macro RS-~ spc) ;; acento circunflexo
   crase (macro RS-´ spc)
-  dollar (t! ow.keys RS-4 @crase nop0)
   tiu (macro (unshift ~) spc)
-  fslash (t! ow.keys / @tiu nop0)
   percen RS-5
-  hash (t! ow.keys RS-3 @percen nop0)
   ltan RS-,
-  dot (t! ow.keys . @ltan nop0)
   gtan RS-.
-  comma (t! ow.keys , @gtan nop0)
   qmark RS-/
+
+  1  (t! ow.keys + 1 1)
+  2 (t! ow.keys [ 2 2)
+  3 (t! ow.keys RS-[ 3 3)
+  4 (t! ow.keys RS-9 4 4)
+  5 (t! ow.keys = 5 5)
+  6 (t! ow.keys RS-7 6 6)
+  7 (t! ow.keys RS-0 7 7)
+  8 (t! ow.keys RS-] 8 8)
+  9 (t! ow.keys ] 9 9)
+  0 (t! ow.keys @crase 0 0)
+  excl (t! ow.keys RS-1 @caret nop0) ;; ! | ^ 
+  at (t! ow.keys RS-2 RS-2 nop0) ;; @ | @
+  dollar (t! ow.keys RS-4 RS-8 nop0) ;; $ | *
+  fslash (t! ow.keys / @tiu nop0) ;; / | ~ 
+  hash (t! ow.keys RS-3 @percen nop0) ;; # | %
+  dot (t! ow.keys . @ltan nop0) ;; . | <
+  comma (t! ow.keys , @gtan nop0) ;; , | >
 )
 
 (defvar
@@ -107,14 +109,10 @@
   pseudo.sft nop1
 )
 
-(defalias
-  rctl (tap-dance 300 (rctl (on-press toggle-vkey pseudo.sft)))
-)
-
 (deflayer programmer
-  @esc    @plus     @sbracl    @bracl    @prthl    @equal   @and     @prthr    @bracr    @sbracr    @aster    @excl    @at   bspc
+  @esc    @1     @2    @3    @4    @5   @6     @7    @8    @9    @0    @excl    @at   bspc
   _  _     _    _    _    _    _    _    _    _    _    grv    @dollar  _ 
   @onlycaps _     _    _    _    _    _    _    _    _    ;    @fslash    @hash
   _ _     _    _    _    _    _    _    _    -    @dot    @comma  _  _ 
-  _ _ _           _                @ralt _  @rctl
+  _ _ _           spc                @ralt _  rctl
 )

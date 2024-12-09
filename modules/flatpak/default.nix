@@ -22,9 +22,6 @@ in
       services.flatpak = {
         enable = true;
         packages = [
-          "io.beekeeperstudio.Studio"
-          "io.github.zen_browser.zen"
-          "in.cinny.Cinny"
           "org.signal.Signal"
           "md.obsidian.Obsidian"
           "dev.vencord.Vesktop"
