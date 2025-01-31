@@ -27,32 +27,27 @@
         syncthing.enable = true;
       };
 
-      networking.firewall.allowedTCPPorts = [ 25565 53317 ];
-      networking.firewall.allowedUDPPorts = [ 25565 53317 ];
-
-      users.users.cloudflared = {
-        group = "cloudflared";
-        isSystemUser = true;
+      networking.firewall = {
+        allowedTCPPorts = [ 25565 53317 ];
+        allowedUDPPorts = [ 25565 53317 ];
+        logReversePathDrops = true;
+        # wireguard trips rpfilter up
+        extraCommands = ''
+          ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
+          ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
+        '';
+        extraStopCommands = ''
+          ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
+          ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
+        '';
       };
-      users.groups.cloudflared = { };
-
-      systemd.services.my_tunnel = {
-        wantedBy = [ "multi-user.target" ];
-        after = [ "network-online.target" "systemd-resolved.service" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token eyJhIjoiZDUxN2M1OTViMWUyYzQ3MDVhMDRkNzEzZjMzNzUzZmIiLCJ0IjoiMmM1ZjdjODEtMzMwNi00YmM4LTkxNTktMGM4OTUzNDg0N2M1IiwicyI6IlpqQmlNak00TUdNdE9XSTBPUzAwTUROa0xUazJZV0V0TlRZeU5XRTBOVFZpWVRrMyJ9";
-          Restart = "always";
-          User = "cloudflared";
-          Group = "cloudflared";
-        };
-      };
-
-      environment.systemPackages = [ pkgs.cloudflared pkgs.wget ];
+      environment.systemPackages = with pkgs;[ ];
 
       home-manager.users.davi.home.packages = with pkgs; [
-        texlive.combined.scheme-full
+        #        texlive.combined.scheme-full
         gparted
         pavucontrol
+        ventoy
       ];
     };
 }

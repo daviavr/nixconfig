@@ -16,15 +16,15 @@ in
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    security.doas.enable = true;
-    security.sudo.enable = false;
-    security.doas.extraRules = [{
-      users = [ "davi" ];
-      # Optional, retains environment variables while running commands 
-      # e.g. retains your NIX_PATH when applying your config
-      keepEnv = true;
-      persist = true; # Optional, don't ask for the password for some time, after a successfully authentication
-    }];
+    #security.doas.enable = true;
+    #security.sudo.enable = false;
+    #security.doas.extraRules = [{
+    #  users = [ "davi" ];
+    #  # Optional, retains environment variables while running commands 
+    #  # e.g. retains your NIX_PATH when applying your config
+    #  keepEnv = true;
+    #  persist = true; # Optional, don't ask for the password for some time, after a successfully authentication
+    #}];
 
     services.xserver.xkb = {
       layout = "br";
@@ -77,6 +77,7 @@ in
     services.gvfs.enable = true;
 
     environment.systemPackages = with pkgs; [
+      bind
       ungoogled-chromium
       unzip
       git
@@ -85,7 +86,7 @@ in
       ffmpeg
       (
         let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-        pkgs.buildFHSUserEnv (base // {
+        pkgs.buildFHSEnv (base // {
           name = "fhs";
           targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config pkgs.doas];
           profile = "export FHS=1";
@@ -99,7 +100,7 @@ in
       ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     };
 
-    fonts.packages = with pkgs; [ nerdfonts ];
+    fonts.packages = with pkgs; [ nerd-fonts.caskaydia-mono nerd-fonts.fira-code nerd-fonts.fira-mono ];
 
     system.stateVersion = "24.05"; # Did you read the comment?
   };

@@ -17,8 +17,7 @@ in
         initExtra = "PATH=\$PATH:/home/davi/.cargo/bin";
 
         shellAliases = {
-          update = "doas nixos-rebuild switch --flake /home/davi/nixconfig";
-          sudo = "doas";
+          update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig";
           ptg = "polybar-msg cmd toggle";
         };
 
