@@ -23,6 +23,13 @@ in
         userName = name;
         userEmail = email;
 
+        ignores = [
+          ".direnv/"
+          ".envrc"
+          "flake.lock"
+          "flake.nix"
+        ];
+
         extraConfig = {
           init.defaultBranch = saferepo.branch;
           # adding nixconfig as safe dir

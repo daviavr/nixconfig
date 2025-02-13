@@ -14,7 +14,7 @@ in
         enableCompletion = true;
         syntaxHighlighting.enable = true;
         autosuggestion.enable = true;
-        initExtra = "PATH=\$PATH:/home/davi/.cargo/bin";
+        initExtra = "PATH=\$PATH:/home/davi/.cargo/bin:/home/davi/.pnpm";
 
         shellAliases = {
           update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig";
