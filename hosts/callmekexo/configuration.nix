@@ -19,6 +19,7 @@
         pipewire.enable = true;
         flatpak.enable = true;
         kitty.enable = true;
+        alacritty.enable = true;
         git.enable = true;
         obs-studio.enable = true;
         direnv.enable = true;

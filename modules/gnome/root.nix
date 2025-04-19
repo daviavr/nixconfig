@@ -45,8 +45,6 @@ in
     first-run = false;
     view = "icon-view";
     window-maximized = false;
-    window-position = [ 26 23 ];
-    window-size = [ 2032 1104 ];
   };
 
   "org/gnome/calculator" = {
@@ -574,14 +572,8 @@ in
 
   "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
     binding = "<Super>Return";
-    command = "kitty";
+    command = "alacritty";
     name = "Terminal";
-  };
-
-  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-    binding = "<Super>m";
-    command = "/home/davi/.local/scripts/dropdown-kitty.sh";
-    name = "Dropdown Terminal";
   };
 
   "org/gnome/shell" = {
@@ -905,15 +897,6 @@ in
     toggle-tiling = [ "<Super>z" ];
   };
 
-  "org/gnome/shell/extensions/rounded-window-corners-reborn" = {
-    border-color = mkTuple [ 0.1294117569923401 0.5647058486938477 0.6431372761726379 1.0 ];
-    border-width = 0;
-    settings-version = mkUint32 6;
-    skip-libadwaita-app = true;
-    skip-libhandy-app = false;
-    tweak-kitty-terminal = false;
-  };
-
   "org/gnome/shell/extensions/system-monitor" = {
     show-download = false;
     show-swap = false;
@@ -997,8 +980,6 @@ in
     sort-directories-first = false;
     sort-order = "ascending";
     type-format = "category";
-    window-position = mkTuple [ 26 23 ];
-    window-size = mkTuple [ 1231 902 ];
   };
 
 }

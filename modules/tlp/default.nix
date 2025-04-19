@@ -19,13 +19,13 @@ in
         RUNTIME_PM_ON_BAT = "auto";
 
         CPU_DRIVER_OPMODE_ON_AC = "active";
-        CPU_DRIVER_OPMODE_ON_BAT = "passive";
+        CPU_DRIVER_OPMODE_ON_BAT = "active";
 
         CPU_SCALING_GOVERNOR_ON_AC = "powersave";
-        CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
         CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
         CPU_MIN_PERF_ON_AC = 12;
         CPU_MAX_PERF_ON_AC = 100;
@@ -55,7 +55,7 @@ in
         INTEL_GPU_BOOST_FREQ_ON_BAT = 700;
 
         PCIE_ASPM_ON_AC = "default";
-        PCIE_ASPM_ON_BAT = "powersupersave";
+        PCIE_ASPM_ON_BAT = "default";
 
         DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth nfc wwan";
         DEVICES_TO_ENABLE_ON_STARTUP = "wifi";

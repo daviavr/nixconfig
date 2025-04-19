@@ -9,15 +9,19 @@ in
     home-manager.users.davi = {
       programs.alacritty = {
         enable = true;
+        theme = "gruvbox_dark";
         settings = {
-          font.normal.family = "DejaVuSansMono";
-          font.size = 18;
+          font = {
+            normal.family = "DejaVuSansMono";
+            size = 16;
+          };
+
+          window.decorations = "None";
         };
-        home.packages = with pkgs; [
-          alacritty
-          alacritty-theme
-        ];
       };
+      home.packages = with pkgs; [
+        alacritty
+      ];
     };
   };
 }
