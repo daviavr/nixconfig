@@ -14,7 +14,7 @@ in
     home-manager.users.davi.programs.vscode = {
       enable = true;
       package = pkgs.vscode;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
         usernamehw.errorlens
         esbenp.prettier-vscode

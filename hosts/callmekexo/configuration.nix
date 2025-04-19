@@ -41,7 +41,10 @@
           ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
         '';
       };
-      environment.systemPackages = with pkgs;[ ];
+      environment.systemPackages = with pkgs;[ 
+        jdk17_headless
+        nodejs
+      ];
 
       home-manager.users.davi.home.packages = with pkgs; [
         #        texlive.combined.scheme-full

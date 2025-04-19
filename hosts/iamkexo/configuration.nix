@@ -36,7 +36,7 @@
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-    networking.firewall.allowedTCPPorts = [ 3000 8080 8443];
+    networking.firewall.allowedTCPPorts = [ 3000 8080 8443 53317];
     #networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
     hardware.i2c.enable = true;

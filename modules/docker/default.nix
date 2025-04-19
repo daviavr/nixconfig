@@ -5,13 +5,25 @@ in
 {
   options = { modules.docker.enable = mkEnableOption "docker"; };
   config = mkIf cfg.enable {
+    virtualisation.podman = {
+      enable = true;
+      dockerCompat = true;
+    };
+
     virtualisation.docker = {
       rootless = {
         enable = true;
         setSocketVariable = true;
       };
-      daemon.settings = let HOME = builtins.getEnv "HOME"; in { data-root = "${HOME}/.docker/data"; };
+      daemon.settings = let HOME = builtins.getEnv "HOME"; in
+        {
+          data-root = "${HOME}/.docker/data";
+          userland-proxy = false;
+          experimental = true;
+        };
     };
+    users.users."davi".extraGroups = [ "docker" ];
+
     networking.firewall = {
       enable = true;
       extraCommands = ''
@@ -21,6 +33,7 @@ in
     };
     environment.systemPackages = with pkgs; [
       docker-compose
+      distrobox
     ];
   };
 }

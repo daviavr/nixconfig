@@ -12,14 +12,17 @@ in
     services.tlp = {
       enable = true;
       settings = {
+        SOUND_POWER_SAVE_ON_AC = 0;
+        SOUND_POWER_SAVE_ON_BAT = 10;
+
         RUNTIME_PM_ON_AC = "auto";
         RUNTIME_PM_ON_BAT = "auto";
 
-        CPU_DRIVER_OPMODE_ON_AC = "passive";
-        CPU_DRIVER_OPMODE_ON_BAT = "active";
+        CPU_DRIVER_OPMODE_ON_AC = "active";
+        CPU_DRIVER_OPMODE_ON_BAT = "passive";
 
-        CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+        CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
 
         CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
@@ -27,7 +30,10 @@ in
         CPU_MIN_PERF_ON_AC = 12;
         CPU_MAX_PERF_ON_AC = 100;
         CPU_MIN_PERF_ON_BAT = 2;
-        CPU_MAX_PERF_ON_BAT = 42;
+        CPU_MAX_PERF_ON_BAT = 50;
+
+        #CPU_SCALING_MIN_FREQ_ON_BAT = 0;
+        #CPU_SCALING_MAX_FREQ_ON_BAT = 2100000;
 
         CPU_BOOST_ON_AC = 1;
         CPU_BOOST_ON_BAT = 0;
@@ -59,7 +65,7 @@ in
         DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth nfc wwan";
 
         USB_AUTOSUSPEND = 0;
-#        USB_DENYLIST = "0001:0001 04f3:3140 04f3:04f3 1d6b:0002";
+        #        USB_DENYLIST = "0001:0001 04f3:3140 04f3:04f3 1d6b:0002";
 
         RESTORE_THRESHOLDS_ON_BAT = 0;
       };
