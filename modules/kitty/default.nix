@@ -16,8 +16,8 @@ in
           enable_audio_bell no
         '';
         font = {
-          name = "DejaVuSansMono";
-          size = 16;
+          name = "CaskaydiaCove NF";
+          size = 15;
         };
         themeFile = "gruvbox-dark-hard";
       };

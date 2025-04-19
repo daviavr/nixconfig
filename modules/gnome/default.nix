@@ -21,7 +21,7 @@ in
     home-manager.users.davi = { lib, ... }: {
       dconf = {
         enable = true;
-        settings = import ./dconf.nix lib.hm.gvariant;
+        settings = import ./root.nix lib.hm.gvariant;
       };
       home.packages = (with pkgs.gnomeExtensions; [
         pop-shell

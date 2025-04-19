@@ -10,7 +10,7 @@ in
   config = mkIf config.modules.kanata.enable {
     services.kanata = {
       enable = true;
-      keyboards.mykeyboards.configFile = ./cfg-linux.kbd;
+      keyboards.mykeyboards.configFile = ./madlion68he.kbd;
     };
 
     users.users.davi.extraGroups = [ "uinput" ]; # "adbusers" ];

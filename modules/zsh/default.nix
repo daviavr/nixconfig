@@ -7,6 +7,9 @@ in
 
   options = { modules.zsh.enable = mkEnableOption "zsh"; };
   config = mkIf cfg.enable {
+    environment.sessionVariables = {
+    };
+
     home-manager.users.davi = {
       home.packages = with pkgs; [ tmux ];
       programs.zsh = {
@@ -14,7 +17,7 @@ in
         enableCompletion = true;
         syntaxHighlighting.enable = true;
         autosuggestion.enable = true;
-        initExtra = "PATH=\$PATH:/home/davi/.cargo/bin:/home/davi/.pnpm";
+        initExtra = "PATH=\$PATH:/home/davi/.cargo/bin";
 
         shellAliases = {
           update = "sudo nixos-rebuild switch --flake /home/davi/nixconfig";
